@@ -5,7 +5,7 @@
 
 body {
     width: 100%;
-    font-family: sans-serif;
+    font-family: 'Karla', sans-serif;
     font-size: 14px;
     background: #ffffff;
 }
@@ -37,11 +37,25 @@ main {
 .wrapper {
     max-width: 850px;
     margin: 0 auto;
+    padding: 2em .5rem;
 }
 
 .card-container {
-    border: solid 1px #333333;
+    border: solid 2px #333333;
     margin: 0 auto;
     position: relative;
+    border-radius: 15px;
+    padding: 1em;
 }
 
+#quiz button {
+    margin: 8px;
+    padding: 10px;
+    background: #9ACFCC;
+    border-radius: 10px;
+    color: #00403C;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    outline: none;
+  }
