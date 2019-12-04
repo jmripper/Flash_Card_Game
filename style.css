@@ -48,6 +48,15 @@ main {
     padding: 1em;
 }
 
+.question-title {
+    font-size: 22px;
+    line-height: 28px;
+    text-align: center;
+    padding: 0;
+    width: 100%;
+    margin: 0 auto;
+}
+
 .button-container {
     display: flex;
     flex-flow: nowrap;
