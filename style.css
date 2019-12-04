@@ -48,7 +48,15 @@ main {
     padding: 1em;
 }
 
-#quiz button {
+.button-container {
+    display: flex;
+    flex-flow: nowrap;
+    justify-content: center;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.button-container button {
     margin: 8px;
     padding: 10px;
     background: #9ACFCC;
