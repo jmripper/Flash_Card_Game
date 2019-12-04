@@ -39,5 +39,10 @@ class questionCard {
 }
 
 const parkCards = [
-    new questionCard
+    new questionCard("What state contains the most national parks?",
+    ["Alaska", "Colorado","Utah", "California"], "California"),
+    new questionCard("What was the first National Park?",
+    ["Dealth Valley National Park", "Yosemite National Park", "Acadia National Park", "Yellowstone National Park"], "Yellowstone National Park"),
+    new questionCard("What national park is home to the longest cave system in the world?",
+    ["Mammoth Cave National Park", "Canyonlands National Park", "Carlsbad Caverns National Park", "Great Basin National Park"], "Mammoth Cave National Park")
 ]
