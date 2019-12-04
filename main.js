@@ -27,27 +27,28 @@ const parkCards = [
 
 let activeCard = 0
 
-
-const questionBeingAsked = document.querySelector(".question-asked")
+const questionTitle = document.querySelector(".question-title")
 const answerChoices = document.querySelector(".answer-choices")
 const buttonContainer = document.querySelector(".button-container")
+const nextButton = document.getElementById("next-question-button")
+const backButton = document.getElementById("prev-question-button")
 
 
 function displayQuestionCard() {
     // for (let i = 0; i < parkCards.length; i++) {
-        //seperates out each question object from the array of parkCards
+        //seperates out each question object from the array of parkCards starting at card 0 in the parkCards array
         const card = parkCards[activeCard]
-        console.log(card)
         //grabs question from question card class
         const currentQuestion = card.question;
+        questionTitle.innerHTML = currentQuestion
         //create a new div element
-        const newDiv = document.createElement("div")
+        //const newDiv = document.createElement("div")
         //add said class to new div element
-        newDiv.className = "question-title"
+        //newDiv.className = "question-title"
         //create text node with question
-        const titleText = document.createTextNode(currentQuestion)
-        newDiv.appendChild(titleText);
-        document.querySelector(".card-container").insertBefore(newDiv, answerChoices)
+        //const titleText = document.createTextNode(currentQuestion)
+        //newDiv.appendChild(titleText);
+        //document.querySelector(".card-container").insertBefore(newDiv, answerChoices)
 
 
         const answerList = card.answerchoice
@@ -63,4 +64,19 @@ function displayQuestionCard() {
     // }
 }
 displayQuestionCard();
+
+nextButton.addEventListener("click", evt => {
+    evt.preventDefault();
+    activeCard++;
+    displayQuestionCard()
+
+})
+
+backButton.addEventListener("click", evt => {
+    evt.preventDefault();
+    activeCard--;
+    displayQuestionCard()
+
+})
+
 
