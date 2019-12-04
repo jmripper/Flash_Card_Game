@@ -1,40 +1,10 @@
-const questionsObject = [{
-    question: "What was the first National Park?",
-    choices: {
-        correct: "Yellowstone",
-        wrong: ["Yosemite", "Death Valley", "Acadia", "Yellowstone"]
-  }
-    },
-    {
-        question: "What national park is home to the world's largest tree by volume?",
-        choices: {
-            correct: "Sequoia",
-            wrong: ["Redwood", "Everglades", "Joshua Tree", "Sequoia"]
-      }
-        },
-]
-
-const quiz = function(quiz_name) {
-    this.quiz_name
-    this.questions = [];
-}
-
-function startQuiz() {
-
-    function showQuestions() {
-
-    }
-
-    function showResults() {
-
-    }
-}
 //class questionCard with properties to ask the question, give answer choices and provide the correct answer
 class questionCard {
     constructor(question,answerChoice,rightAnswer) {
         this.question = question
         this.answerchoice = answerChoice
         this.rightAnswer = rightAnswer
+        
     }
 
     //isAnswerCorrect(clickedAnswer) {
@@ -55,7 +25,8 @@ const parkCards = [
     "Mammoth Cave National Park")
 ];
 
-//console.log(parkCards)
+let activeCard = 0
+
 
 const questionBeingAsked = document.querySelector(".question-asked")
 const answerChoices = document.querySelector(".answer-choices")
@@ -63,12 +34,12 @@ const buttonContainer = document.querySelector(".button-container")
 
 
 function displayQuestionCard() {
-    for (let i = 0; i < parkCards.length; i++) {
+    // for (let i = 0; i < parkCards.length; i++) {
         //seperates out each question object from the array of parkCards
-        const card = parkCards[i]
+        const card = parkCards[activeCard]
         console.log(card)
         //grabs question from question card class
-        const currentQuestion = parkCards[i].question;
+        const currentQuestion = card.question;
         //create a new div element
         const newDiv = document.createElement("div")
         //add said class to new div element
@@ -79,7 +50,7 @@ function displayQuestionCard() {
         document.querySelector(".card-container").insertBefore(newDiv, answerChoices)
 
 
-        const answerList = parkCards[i].answerchoice
+        const answerList = card.answerchoice
         answerList.forEach(choice => {
             let answerList2 = document.createElement("ul")
             let answerItem = document.createElement("li")
@@ -89,7 +60,7 @@ function displayQuestionCard() {
             answerChoices.appendChild(answerList2)
             //console.log(textnode)
         });
-    }
+    // }
 }
 displayQuestionCard();
 
