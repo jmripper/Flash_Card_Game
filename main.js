@@ -21,12 +21,42 @@ const parkCards = [
     new questionCard("What state contains the most national parks?",
     ["Alaska", "Colorado","Utah", "California"], 
     "California"),
+
     new questionCard("What was the first National Park?",
     ["Dealth Valley National Park", "Yosemite National Park", "Acadia National Park", "Yellowstone National Park"],
     "Yellowstone National Park"),
+
     new questionCard("What national park is home to the longest cave system in the world?",
     ["Mammoth Cave National Park", "Canyonlands National Park", "Carlsbad Caverns National Park", "Great Basin National Park"], 
-    "Mammoth Cave National Park")
+    "Mammoth Cave National Park"),
+
+    new questionCard("What national park is home to the world's largest tree by volume?",
+    ["Mammoth Cave National Park", "Canyonlands National Park", "California's Sequoia National Park", "Everglades National Park"], 
+    "California's Sequoia National Park"),
+
+    new questionCard("What is the most visited national park?",
+    ["The Great Smoky Mountains", "The Grand Canyon", "California's Sequoia National Park", "Everglades National Park"], 
+    "The Great Smoky Mountains"),
+
+    new questionCard("What is the most visited national park?",
+    ["The Great Smoky Mountains", "The Grand Canyon", "California's Sequoia National Park", "Everglades National Park"], 
+    "The Great Smoky Mountains"),
+
+    new questionCard("What is the most visited national park?",
+    ["The Great Smoky Mountains", "The Grand Canyon", "California's Sequoia National Park", "Everglades National Park"], 
+    "The Great Smoky Mountains"),
+
+    new questionCard("What is the most visited national park?",
+    ["The Great Smoky Mountains", "The Grand Canyon", "California's Sequoia National Park", "Everglades National Park"], 
+    "The Great Smoky Mountains"),
+
+    new questionCard("What is the most visited national park?",
+    ["The Great Smoky Mountains", "The Grand Canyon", "California's Sequoia National Park", "Everglades National Park"], 
+    "The Great Smoky Mountains"),
+
+    new questionCard("What is the most visited national park?",
+    ["The Great Smoky Mountains", "The Grand Canyon", "California's Sequoia National Park", "Everglades National Park"], 
+    "The Great Smoky Mountains"),
 ];
 
 let activeCard = 0
@@ -79,7 +109,7 @@ function displayQuestionCard() {
                     current[0].className = current[0].className.replace("active", " ");
                     this.className += "active";
                     if (card.isAnswerCorrect(userAnswer) === true) {
-                        //answerItem.setAttribute("class","answer-correct")
+                        answerItem.setAttribute("class","answer-correct")
                         //answerItem.style.border = "2px solid #3c763d"
                         answerText.style.color = "#3c763d"
                         answerText.innerText = "Your Right"
@@ -89,6 +119,7 @@ function displayQuestionCard() {
                         //answerItem.style.border = "2px solid red"
                         answerText.style.color = "red"
                         answerText.innerText = "Sorry, Try Again"
+                        showScore()
                     }
                     
                 })

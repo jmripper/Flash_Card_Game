@@ -76,13 +76,6 @@ main {
 #answer-list {
     padding: 15px 0 15px;
     margin: 0 auto;
-    /*display: flex;
-    flex-flow: wrap;*/
-}
-
-
-.answer-wrong {
-    border: 2px solid red;
 }
 
 .answer-text {
@@ -97,6 +90,14 @@ main {
     background-color: #dff0d8;
     color: #3c763d;
     font-weight: 600;
+    outline: none;
+    text-align: center;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 1rem;
+    border: 1px dotted #333333;
+    border-radius: 10px;
+    margin-top: 10px;
 }
 
 .button-container {
@@ -119,6 +120,7 @@ main {
     cursor: pointer;
     outline: none;
     display: block;
+    outline: none;
   }
 
 button {
@@ -139,8 +141,11 @@ button {
 .active, .btn:hover {
     background-color:#F08080;
     color: #B22222;
-    
   }
+.active, .answer-correct:hover {
+    background-color: #dff0d8;
+    color: #00403C;
+}
 
   @media screen and (min-width: 576px) {
     .wrapper {
@@ -152,7 +157,46 @@ button {
     .question-title {
         font-size: 32px;
         line-height: 40px;
-        padding: 0 1em;
+        padding: .5rem 1em;
+    }
+    .answer-choices {
+        margin: 0 auto;
+        padding: 0;
+    }
+    #answer-list {
+        display: flex;
+        flex-flow: wrap;
+        justify-content: center;
     }
 
+    .btn {
+        width: 300px;
+        height: 250px;
+        margin: 10px;
+        display: flex;
+        flex-flow: nowrap;
+        justify-content: center;
+        align-items: baseline ;
+        text-align: center;
+    }
+    .answer-correct {
+        width: 300px;
+        height: 250px;
+        margin: 10px;
+        display: flex;
+        flex-flow: nowrap;
+        justify-content: center;
+        align-items: baseline ;
+        text-align: center;
+    }
+    #score {
+        font-size:26px;
+        line-height: 34px;
+    }
+    .button-style {
+        margin: 15px;
+        padding: 20px;
+        font-size: 18px;
+
+    }
   }
