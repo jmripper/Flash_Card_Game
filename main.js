@@ -9,13 +9,15 @@ class questionCard {
 
     isAnswerCorrect(clickedAnswer) {
         if (clickedAnswer === this.rightAnswer) {
-            console.log("correct!")
+            //this.points++
+            //console.log("correct!")
             return true
         } else {
-            console.log("incorrect!")
+            //console.log("incorrect!")
             return false;}
     }
 }
+
 
 //new array with class questionCard and its properties, question, answerChoice, rightAnswer
 const parkCards = [
@@ -43,9 +45,19 @@ const answerList = document.getElementById("answer-list")
 function displayQuestionCard() {
         //seperates out each question object from the array of parkCards starting at card 0 in the parkCards array
         const card = parkCards[activeCard]
+        console.log(activeCard)
         //grabs question from question card class
         const currentQuestion = card.question;
         questionTitle.innerHTML = currentQuestion
+        
+        //creates next question button
+        nextButton.setAttribute("class", "button-style")
+        nextButton.innerText = "Next Question"
+        //once pass the first card show back button
+        if (activeCard > 0) {
+            backButton.setAttribute("class", "button-style")
+        }
+
         //create a new div element
         //const newDiv = document.createElement("div")
         //add said class to new div element
@@ -55,16 +67,25 @@ function displayQuestionCard() {
         //newDiv.appendChild(titleText);
         //document.querySelector(".card-container").insertBefore(newDiv, answerChoices)
         const cardAnswerList = card.answerchoice
-            console.log(cardAnswerList)
+
         cardAnswerList.forEach(choice => {
             let answerItem = document.createElement("li")
+            //answerItem.className = "answer-item"
 
                 answerItem.addEventListener("click", evt => {
                     const rightAnswer = card.rightAnswer
                     const userAnswer = evt.target.innerText
                     console.log(rightAnswer)
                     console.log(evt.target.innerText)
-                    card.isAnswerCorrect(userAnswer)
+                    //card.isAnswerCorrect(userAnswer)
+                    if (card.isAnswerCorrect(userAnswer) === true) {
+                        answerItem.className = "answer-correct"
+                        answerItem.innerText = "Correct!"
+                        console.log("check check")
+                    } //else if (card.isAnswerCorrect(userAnswer) == false) {
+                        //answerItem.className = "answer-wrong"
+                        //answerItem.innerText = "Sorry, Try Again"
+                    //}
                 })
 
             answerList.appendChild(answerItem)
@@ -72,8 +93,18 @@ function displayQuestionCard() {
             answerItem.innerHTML = choice
         })
 
+        
 }
 displayQuestionCard();
+
+function showScore() {
+    const score = document.getElementById("score")
+    console.log(`${activeCard}`)
+    score.style.display = "block";
+    score.innerText = `Score: ${activeCard}/${parkCards.length}`
+
+}
+showScore()
 
 //delete li answer choice elements
 function deleteChild() {   
