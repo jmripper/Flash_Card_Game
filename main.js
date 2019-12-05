@@ -7,9 +7,14 @@ class questionCard {
         
     }
 
-    //isAnswerCorrect(clickedAnswer) {
-        //if (clickedAnswer === )
-    //}
+    isAnswerCorrect(clickedAnswer) {
+        if (clickedAnswer === this.rightAnswer) {
+            console.log("correct!")
+            return true
+        } else {
+            console.log("incorrect!")
+            return false;}
+    }
 }
 
 //new array with class questionCard and its properties, question, answerChoice, rightAnswer
@@ -32,11 +37,10 @@ const answerChoices = document.querySelector(".answer-choices")
 const buttonContainer = document.querySelector(".button-container")
 const nextButton = document.getElementById("next-question-button")
 const backButton = document.getElementById("prev-question-button")
-const answerList2 = document.getElementById("answer-list")
+const answerList = document.getElementById("answer-list")
 
 
 function displayQuestionCard() {
-    // for (let i = 0; i < parkCards.length; i++) {
         //seperates out each question object from the array of parkCards starting at card 0 in the parkCards array
         const card = parkCards[activeCard]
         //grabs question from question card class
@@ -50,30 +54,36 @@ function displayQuestionCard() {
         //const titleText = document.createTextNode(currentQuestion)
         //newDiv.appendChild(titleText);
         //document.querySelector(".card-container").insertBefore(newDiv, answerChoices)
-        const answerList = card.answerchoice
-            console.log(card)
-    //for (let i = 0; i < answerList.length; i++) {
-
-        answerList.forEach(choice => {
+        const cardAnswerList = card.answerchoice
+            console.log(cardAnswerList)
+        cardAnswerList.forEach(choice => {
             let answerItem = document.createElement("li")
-            answerList2.appendChild(answerItem)
-            const listItem = document.querySelectorAll("#answer-list li")
-            //console.log(answerList2)
+
+                answerItem.addEventListener("click", evt => {
+                    const rightAnswer = card.rightAnswer
+                    const userAnswer = evt.target.innerText
+                    console.log(rightAnswer)
+                    console.log(evt.target.innerText)
+                    card.isAnswerCorrect(userAnswer)
+                })
+
+            answerList.appendChild(answerItem)
+            //add answerchoice values to li elements created
             answerItem.innerHTML = choice
-            console.log(listItem.length)
-            console.log(answerItem) 
         })
+
 }
 displayQuestionCard();
 
+//delete li answer choice elements
 function deleteChild() {   
-        let first = answerList2.firstElementChild; 
+        let first = answerList.firstElementChild; 
         while (first) { 
             first.remove(); 
-            first = answerList2.firstElementChild; 
-        } 
+            first = answerList.firstElementChild;} 
 } 
 
+//next question button event click listener
 nextButton.addEventListener("click", evt => {
     evt.preventDefault();
     activeCard++;
@@ -82,6 +92,7 @@ nextButton.addEventListener("click", evt => {
 
 })
 
+//previous button event click listener
 backButton.addEventListener("click", evt => {
     evt.preventDefault();
     activeCard--;

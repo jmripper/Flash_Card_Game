@@ -45,7 +45,7 @@ main {
     margin: 0 auto;
     position: relative;
     border-radius: 15px;
-    padding: 1em;
+    padding: 1.5em;
 }
 
 .question-title {
@@ -55,6 +55,18 @@ main {
     padding: 0;
     width: 100%;
     margin: 0 auto;
+}
+
+#answer-list {
+    padding: 0;
+    margin: 1rem auto;
+    /*display: flex;
+    flex-flow: wrap;*/
+}
+
+#answer-list li {
+    padding: 1rem;
+    font-size: 16px;
 }
 
 .button-container {
