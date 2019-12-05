@@ -67,37 +67,36 @@ function displayQuestionCard() {
         //newDiv.appendChild(titleText);
         //document.querySelector(".card-container").insertBefore(newDiv, answerChoices)
         const cardAnswerList = card.answerchoice
-
+        
         cardAnswerList.forEach(choice => {
             let answerItem = document.createElement("li")
-            //answerItem.style.pointerEvents = "none";
-            //answerItem.className = "answer-item"
-
+            answerItem.className = "btn"
+            
                 answerItem.addEventListener("click", evt => {
-                    const rightAnswer = card.rightAnswer
-                    const userAnswer = evt.target.innerText
-                    //console.log(rightAnswer)
-                    //console.log(evt.target.innerText)
-                    //card.isAnswerCorrect(userAnswer)
+                    const userAnswer = evt.target.innerText;
+                    
+                    let current = document.getElementsByClassName("btn");
+                    current[0].className = current[0].className.replace("active", " ");
+                    this.className += "active";
                     if (card.isAnswerCorrect(userAnswer) === true) {
-                        answerItem.className = "answer-correct"
-                        answerItem.style.border = "2px solid #3c763d"
+                        //answerItem.setAttribute("class","answer-correct")
+                        //answerItem.style.border = "2px solid #3c763d"
                         answerText.style.color = "#3c763d"
-                        //answerItem.innerText = "Correct!"
-                        answerItem.style.pointerEvents = "none";
                         answerText.innerText = "Your Right"
                         score++
                         showScore()
                     } else if (card.isAnswerCorrect(userAnswer) == false) {
-                        answerItem.style.border = "2px solid red"
+                        //answerItem.style.border = "2px solid red"
+                        answerText.style.color = "red"
                         answerText.innerText = "Sorry, Try Again"
-                        //answerItem.innerText = "Sorry, Try Again"
                     }
+                    
                 })
             answerList.appendChild(answerItem)
             //add answerchoice values to li elements created
             answerItem.innerHTML = choice
-        })        
+        //}
+    })        
 }
 displayQuestionCard();
 
@@ -122,6 +121,7 @@ nextButton.addEventListener("click", evt => {
     evt.preventDefault();
         activeCard++;
         deleteChild();
+        answerText.innerText = '';
     if (activeCard !== parkCards.length) {
         return displayQuestionCard();
     } else if (activeCard === parkCards.length) {
@@ -135,6 +135,7 @@ nextButton.addEventListener("click", evt => {
 //previous button event click listener
 backButton.addEventListener("click", evt => {
     evt.preventDefault();
+    answerText.innerText = '';
     activeCard--;
     deleteChild();
     displayQuestionCard();

@@ -80,13 +80,6 @@ main {
     flex-flow: wrap;*/
 }
 
-#answer-list li {
-    padding: 1rem;
-    font-size: 16px;
-    border: 1px dotted #333333;
-    border-radius: 10px;
-    margin-top: 10px;
-}
 
 .answer-wrong {
     border: 2px solid red;
@@ -127,6 +120,39 @@ main {
     outline: none;
     display: block;
   }
+
 button {
     display: none;
 }
+
+.btn {
+    outline: none;
+    background-color: #ffffff;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 1rem;
+    border: 1px dotted #333333;
+    border-radius: 10px;
+    margin-top: 10px;
+  }
+
+.active, .btn:hover {
+    background-color:#F08080;
+    color: #B22222;
+    
+  }
+
+  @media screen and (min-width: 576px) {
+    .wrapper {
+        padding: 2em;
+    }
+    .card-container {
+        padding: 2em;
+    }
+    .question-title {
+        font-size: 32px;
+        line-height: 40px;
+        padding: 0 1em;
+    }
+
+  }
