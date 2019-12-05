@@ -7,13 +7,10 @@ class questionCard {
         
     }
 
-    isAnswerCorrect(clickedAnswer) {
+    isAnswerCorrect(clickedAnswer,points) {
         if (clickedAnswer === this.rightAnswer) {
-            //this.points++
-            //console.log("correct!")
             return true
         } else {
-            //console.log("incorrect!")
             return false;}
     }
 }
@@ -33,6 +30,8 @@ const parkCards = [
 ];
 
 let activeCard = 0
+let score = 0
+let questionNumber = 0
 
 const questionTitle = document.querySelector(".question-title")
 const answerChoices = document.querySelector(".answer-choices")
@@ -40,12 +39,13 @@ const buttonContainer = document.querySelector(".button-container")
 const nextButton = document.getElementById("next-question-button")
 const backButton = document.getElementById("prev-question-button")
 const answerList = document.getElementById("answer-list")
+const answerText = document.querySelector(".answer-text")
 
+//console.log(card)
 
 function displayQuestionCard() {
         //seperates out each question object from the array of parkCards starting at card 0 in the parkCards array
         const card = parkCards[activeCard]
-        console.log(activeCard)
         //grabs question from question card class
         const currentQuestion = card.question;
         questionTitle.innerHTML = currentQuestion
@@ -70,41 +70,44 @@ function displayQuestionCard() {
 
         cardAnswerList.forEach(choice => {
             let answerItem = document.createElement("li")
+            //answerItem.style.pointerEvents = "none";
             //answerItem.className = "answer-item"
 
                 answerItem.addEventListener("click", evt => {
                     const rightAnswer = card.rightAnswer
                     const userAnswer = evt.target.innerText
-                    console.log(rightAnswer)
-                    console.log(evt.target.innerText)
+                    //console.log(rightAnswer)
+                    //console.log(evt.target.innerText)
                     //card.isAnswerCorrect(userAnswer)
                     if (card.isAnswerCorrect(userAnswer) === true) {
                         answerItem.className = "answer-correct"
-                        answerItem.innerText = "Correct!"
-                        console.log("check check")
-                    } //else if (card.isAnswerCorrect(userAnswer) == false) {
-                        //answerItem.className = "answer-wrong"
+                        answerItem.style.border = "2px solid #3c763d"
+                        answerText.style.color = "#3c763d"
+                        //answerItem.innerText = "Correct!"
+                        answerItem.style.pointerEvents = "none";
+                        answerText.innerText = "Your Right"
+                        score++
+                        showScore()
+                    } else if (card.isAnswerCorrect(userAnswer) == false) {
+                        answerItem.style.border = "2px solid red"
+                        answerText.innerText = "Sorry, Try Again"
                         //answerItem.innerText = "Sorry, Try Again"
-                    //}
+                    }
                 })
-
             answerList.appendChild(answerItem)
             //add answerchoice values to li elements created
             answerItem.innerHTML = choice
-        })
-
-        
+        })        
 }
 displayQuestionCard();
 
 function showScore() {
-    const score = document.getElementById("score")
-    console.log(`${activeCard}`)
-    score.style.display = "block";
-    score.innerText = `Score: ${activeCard}/${parkCards.length}`
-
+    const scoreText = document.getElementById("score")
+    console.log(scoreText)
+    scoreText.style.display = "block";
+    scoreText.innerText = `Score: ${score}/${parkCards.length}`
 }
-showScore()
+// showScore()
 
 //delete li answer choice elements
 function deleteChild() {   
@@ -117,10 +120,16 @@ function deleteChild() {
 //next question button event click listener
 nextButton.addEventListener("click", evt => {
     evt.preventDefault();
-    activeCard++;
-    deleteChild();
-    displayQuestionCard();
-
+        activeCard++;
+        deleteChild();
+    if (activeCard !== parkCards.length) {
+        return displayQuestionCard();
+    } else if (activeCard === parkCards.length) {
+        const cardContainer = document.querySelector(".card-container")
+        cardContainer.innerText = '';
+        cardContainer.innerHTML = "<h3>Thanks for playing!</h3>"
+                console.log("game over")
+    }
 })
 
 //previous button event click listener

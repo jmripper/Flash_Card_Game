@@ -1,6 +1,6 @@
 
 * {
-    outline: lightsteelblue 1px solid;
+    
 }
 
 body {
@@ -74,8 +74,8 @@ main {
 }
 
 #answer-list {
-    padding: 0;
-    margin: 1rem auto;
+    padding: 15px 0 15px;
+    margin: 0 auto;
     /*display: flex;
     flex-flow: wrap;*/
 }
@@ -83,14 +83,24 @@ main {
 #answer-list li {
     padding: 1rem;
     font-size: 16px;
+    border: 1px dotted #333333;
+    border-radius: 10px;
+    margin-top: 10px;
 }
 
 .answer-wrong {
     border: 2px solid red;
 }
 
+.answer-text {
+    text-align: center;
+    font-size: 18px;
+    padding: 0 0 10px;
+    color: red;
+}
+
 .answer-correct {
-    border: 1px solid #d6e9c6;
+    border: 1px solid #3c763d;
     background-color: #dff0d8;
     color: #3c763d;
     font-weight: 600;
@@ -101,6 +111,7 @@ main {
     flex-flow: nowrap;
     justify-content: center;
     width: 80%;
+    padding: 0px;
     margin: 0 auto;
 }
 
