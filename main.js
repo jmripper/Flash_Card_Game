@@ -32,6 +32,7 @@ const answerChoices = document.querySelector(".answer-choices")
 const buttonContainer = document.querySelector(".button-container")
 const nextButton = document.getElementById("next-question-button")
 const backButton = document.getElementById("prev-question-button")
+const answerList2 = document.getElementById("answer-list")
 
 
 function displayQuestionCard() {
@@ -49,33 +50,43 @@ function displayQuestionCard() {
         //const titleText = document.createTextNode(currentQuestion)
         //newDiv.appendChild(titleText);
         //document.querySelector(".card-container").insertBefore(newDiv, answerChoices)
-
-
         const answerList = card.answerchoice
+            console.log(card)
+    //for (let i = 0; i < answerList.length; i++) {
+
         answerList.forEach(choice => {
-            let answerList2 = document.createElement("ul")
             let answerItem = document.createElement("li")
-            let textnode = document.createTextNode(choice)
             answerList2.appendChild(answerItem)
-            answerItem.appendChild(textnode);
-            answerChoices.appendChild(answerList2)
-            //console.log(textnode)
-        });
-    // }
+            const listItem = document.querySelectorAll("#answer-list li")
+            //console.log(answerList2)
+            answerItem.innerHTML = choice
+            console.log(listItem.length)
+            console.log(answerItem) 
+        })
 }
 displayQuestionCard();
+
+function deleteChild() {   
+        let first = answerList2.firstElementChild; 
+        while (first) { 
+            first.remove(); 
+            first = answerList2.firstElementChild; 
+        } 
+} 
 
 nextButton.addEventListener("click", evt => {
     evt.preventDefault();
     activeCard++;
-    displayQuestionCard()
+    deleteChild();
+    displayQuestionCard();
 
 })
 
 backButton.addEventListener("click", evt => {
     evt.preventDefault();
     activeCard--;
-    displayQuestionCard()
+    deleteChild();
+    displayQuestionCard();
 
 })
 
