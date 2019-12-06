@@ -24,6 +24,12 @@ header {
     max-width: 1000px;
 }
 
+h2 {
+    font-size: 38px;
+    padding: .5rem;
+    text-align: center;
+}
+
 h3 {
     font-size: 24px;
     text-align: center;
@@ -34,16 +40,29 @@ main {
     width: 100%;
 }
 
+.home-screen {
+    background-image: url(images/Ansel-Adams.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    min-height: 600px;
+}
+
 .wrapper {
     max-width: 850px;
     margin: 0 auto;
     padding: 2em .5rem;
 }
 
+.welcome-screen {
+    color: #000000;
+}
+
+
 #score {
     text-align: center;
     margin: 0 auto;
-    padding: 0 1em 1.5em;
+    padding: 10px;
     display: none;
     font-size: 20px;
     line-height: 28px;
@@ -57,7 +76,8 @@ main {
 
 .card-container {
     border: solid 2px #333333;
-    margin: 0 auto;
+    background-color: #ffffff;
+    margin: 3em auto;
     position: relative;
     border-radius: 15px;
     padding: 1em;
@@ -71,6 +91,11 @@ main {
     padding: 0;
     width: 100%;
     margin: 0 auto;
+    opacity: 1;
+}
+
+.answer-choices {
+    opacity: 1;
 }
 
 #answer-list {
@@ -136,15 +161,18 @@ button {
     border: 1px dotted #333333;
     border-radius: 10px;
     margin-top: 10px;
+    text-align: center;
   }
 
-.active, .btn:hover {
+.active, .btn:active {
     background-color:#F08080;
-    color: #B22222;
+    color: rgb(148, 24, 24);
+    border: 1px solid rgb(148, 24, 24);
   }
 .active, .answer-correct:hover {
     background-color: #dff0d8;
     color: #00403C;
+    border: 1px solid #00403C;
 }
 
   @media screen and (min-width: 576px) {

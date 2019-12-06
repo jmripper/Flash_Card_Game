@@ -31,26 +31,26 @@ const parkCards = [
     "Mammoth Cave National Park"),
 
     new questionCard("What national park is home to the world's largest tree by volume?",
-    ["Mammoth Cave National Park", "Canyonlands National Park", "California's Sequoia National Park", "Everglades National Park"], 
+    ["Red Wood National Park", "Joshua Tree National Park", "California's Sequoia National Park", "Everglades National Park"], 
     "California's Sequoia National Park"),
 
     new questionCard("What is the most visited national park?",
+    ["The Great Smoky Mountains", "The Grand Canyon", "Yosemite National Park", "Rocky Mountain National Park"], 
+    "The Great Smoky Mountains"),
+
+    new questionCard("What is the least visited national park?",
+    ["Dry Tortugas National Park", "Isle Royale National Park", "North Cascades National Park", "Black Canyon of the Gunnison National Park"], 
+    "Isle Royale National Park"),
+
+    new questionCard("What National Park contains the highest peak in North America?",
+    ["Grand Teton National Park", "Hawaii Volcanoes National Park", "Mount Rainier National Park", "Denali National Park"], 
+    "Denali National Park"),
+
+    new questionCard("What is the newest national park?",
     ["The Great Smoky Mountains", "The Grand Canyon", "California's Sequoia National Park", "Everglades National Park"], 
     "The Great Smoky Mountains"),
 
-    new questionCard("What is the most visited national park?",
-    ["The Great Smoky Mountains", "The Grand Canyon", "California's Sequoia National Park", "Everglades National Park"], 
-    "The Great Smoky Mountains"),
-
-    new questionCard("What is the most visited national park?",
-    ["The Great Smoky Mountains", "The Grand Canyon", "California's Sequoia National Park", "Everglades National Park"], 
-    "The Great Smoky Mountains"),
-
-    new questionCard("What is the most visited national park?",
-    ["The Great Smoky Mountains", "The Grand Canyon", "California's Sequoia National Park", "Everglades National Park"], 
-    "The Great Smoky Mountains"),
-
-    new questionCard("What is the most visited national park?",
+    new questionCard("Which was the first national park established for the purpose of protecting man-made structures?",
     ["The Great Smoky Mountains", "The Grand Canyon", "California's Sequoia National Park", "Everglades National Park"], 
     "The Great Smoky Mountains"),
 
@@ -110,13 +110,11 @@ function displayQuestionCard() {
                     this.className += "active";
                     if (card.isAnswerCorrect(userAnswer) === true) {
                         answerItem.setAttribute("class","answer-correct")
-                        //answerItem.style.border = "2px solid #3c763d"
                         answerText.style.color = "#3c763d"
                         answerText.innerText = "Your Right"
                         score++
                         showScore()
                     } else if (card.isAnswerCorrect(userAnswer) == false) {
-                        //answerItem.style.border = "2px solid red"
                         answerText.style.color = "red"
                         answerText.innerText = "Sorry, Try Again"
                         showScore()
@@ -133,11 +131,9 @@ displayQuestionCard();
 
 function showScore() {
     const scoreText = document.getElementById("score")
-    console.log(scoreText)
     scoreText.style.display = "block";
     scoreText.innerText = `Score: ${score}/${parkCards.length}`
 }
-// showScore()
 
 //delete li answer choice elements
 function deleteChild() {   
@@ -157,9 +153,11 @@ nextButton.addEventListener("click", evt => {
         return displayQuestionCard();
     } else if (activeCard === parkCards.length) {
         const cardContainer = document.querySelector(".card-container")
-        cardContainer.innerText = '';
-        cardContainer.innerHTML = "<h3>Thanks for playing!</h3>"
-                console.log("game over")
+        //cardContainer.innerText = '';
+        cardContainer.innerHTML = "Thanks for playing!"
+        //cardContainer.innerHTML = `Your Final Score: ${score}/${parkCards.length}`
+
+        console.log("game over")
     }
 })
 
