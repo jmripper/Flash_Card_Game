@@ -7,7 +7,7 @@ class questionCard {
         
     }
 
-    isAnswerCorrect(clickedAnswer,points) {
+    isAnswerCorrect(clickedAnswer) {
         if (clickedAnswer === this.rightAnswer) {
             return true
         } else {
@@ -46,17 +46,17 @@ const parkCards = [
     ["Grand Teton National Park", "Hawaii Volcanoes National Park", "Mount Rainier National Park", "Denali National Park"], 
     "Denali National Park"),
 
-    new questionCard("What is the newest national park?",
-    ["The Great Smoky Mountains", "The Grand Canyon", "California's Sequoia National Park", "Everglades National Park"], 
-    "The Great Smoky Mountains"),
+    new questionCard("Which is the smallest national park site?",
+    ["Belmont-Paul Women's Equality National Monument", "Thaddeus Kosciuszko National Memorial", "General Grant National Memorial", "African Burial Ground Monument"], 
+    "Thaddeus Kosciuszko National Memorial"),
 
     new questionCard("Which was the first national park established for the purpose of protecting man-made structures?",
-    ["The Great Smoky Mountains", "The Grand Canyon", "California's Sequoia National Park", "Everglades National Park"], 
-    "The Great Smoky Mountains"),
+    ["National Mall and Memorial Parks", "New River Gorge", "Mesa Verde Natiaonal Park", "For Caroline National Park"], 
+    "Mesa Verde Natiaonal Park"),
 
-    new questionCard("What is the most visited national park?",
-    ["The Great Smoky Mountains", "The Grand Canyon", "California's Sequoia National Park", "Everglades National Park"], 
-    "The Great Smoky Mountains"),
+    new questionCard("Which national park site contains the most lighthouses?",
+    ["Cape Cod National Seashore", "Pt. Reyes Natiaonl Seashores", "Ise Royale National Park", "Apostle Island National Lakeshore"], 
+    "Apostle Island National Lakeshore"),
 ];
 
 let activeCard = 0
@@ -76,7 +76,6 @@ const answerText = document.querySelector(".answer-text")
 function displayQuestionCard() {
         //seperates out each question object from the array of parkCards starting at card 0 in the parkCards array
         const card = parkCards[activeCard]
-        //grabs question from question card class
         const currentQuestion = card.question;
         questionTitle.innerHTML = currentQuestion
         
@@ -88,38 +87,27 @@ function displayQuestionCard() {
             backButton.setAttribute("class", "button-style")
         }
 
-        //create a new div element
-        //const newDiv = document.createElement("div")
-        //add said class to new div element
-        //newDiv.className = "question-title"
-        //create text node with question
-        //const titleText = document.createTextNode(currentQuestion)
-        //newDiv.appendChild(titleText);
-        //document.querySelector(".card-container").insertBefore(newDiv, answerChoices)
         const cardAnswerList = card.answerchoice
-        
+        //create li list for answer choices
         cardAnswerList.forEach(choice => {
             let answerItem = document.createElement("li")
-            answerItem.className = "btn"
-            
+            answerItem.className = "answers"
+                //event click listener for each li answer choice
                 answerItem.addEventListener("click", evt => {
                     const userAnswer = evt.target.innerText;
-                    
-                    let current = document.getElementsByClassName("btn");
-                    current[0].className = current[0].className.replace("active", " ");
-                    this.className += "active";
+                    //if user answer = right answer then
                     if (card.isAnswerCorrect(userAnswer) === true) {
-                        answerItem.setAttribute("class","answer-correct")
-                        answerText.style.color = "#3c763d"
+                        answerItem.classList.add("answer-correct")
+                        answerText.classList.add("green")
+                        answerText.classList.remove("red")
                         answerText.innerText = "Your Right"
                         score++
                         showScore()
                     } else if (card.isAnswerCorrect(userAnswer) == false) {
-                        answerText.style.color = "red"
+                        answerText.classList.add("red")
                         answerText.innerText = "Sorry, Try Again"
                         showScore()
-                    }
-                    
+                    } 
                 })
             answerList.appendChild(answerItem)
             //add answerchoice values to li elements created
@@ -154,7 +142,7 @@ nextButton.addEventListener("click", evt => {
     } else if (activeCard === parkCards.length) {
         const cardContainer = document.querySelector(".card-container")
         //cardContainer.innerText = '';
-        cardContainer.innerHTML = "Thanks for playing!"
+        cardContainer.innerHTML = "<h3></h3>Thanks for playing!</h3>"
         //cardContainer.innerHTML = `Your Final Score: ${score}/${parkCards.length}`
 
         console.log("game over")

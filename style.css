@@ -103,11 +103,19 @@ main {
     margin: 0 auto;
 }
 
+.green {
+    color: #3c763d;
+}
+
+.red {
+    color: red;
+}
+
 .answer-text {
     text-align: center;
     font-size: 18px;
     padding: 0 0 10px;
-    color: red;
+    outline: none;
 }
 
 .answer-correct {
@@ -120,7 +128,6 @@ main {
     cursor: pointer;
     font-size: 18px;
     padding: 1rem;
-    border: 1px dotted #333333;
     border-radius: 10px;
     margin-top: 10px;
 }
@@ -152,16 +159,19 @@ button {
     display: none;
 }
 
-.btn {
+li {
     outline: none;
     background-color: #ffffff;
     cursor: pointer;
     font-size: 18px;
     padding: 1rem;
+    text-align: center;
+}
+
+.answers {
     border: 1px dotted #333333;
     border-radius: 10px;
     margin-top: 10px;
-    text-align: center;
   }
 
 .active, .btn:active {
