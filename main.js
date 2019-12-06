@@ -104,6 +104,8 @@ function displayQuestionCard() {
                         score++
                         showScore()
                     } else if (card.isAnswerCorrect(userAnswer) == false) {
+                        answerItem.classList.add("answer-wrong")
+                        answerItem.classList.remove("answers")
                         answerText.classList.add("red")
                         answerText.innerText = "Sorry, Try Again"
                         showScore()
