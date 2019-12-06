@@ -147,15 +147,14 @@ nextButton.addEventListener("click", evt => {
         deleteChild();
         answerText.innerText = '';
         showDescription.innerText = '';
+        showDescription.classList.remove("answer-container")
+        answerText.classList.remove("green")
     if (activeCard !== parkCards.length) {
         return displayQuestionCard();
     } else if (activeCard === parkCards.length) {
         const cardContainer = document.querySelector(".card-container")
         //cardContainer.innerText = '';
         cardContainer.innerHTML = "<h3 class='whatever'>Thanks for playing!</h3><p>Hello</p>"
-        //cardContainer.innerHTML = `Your Final Score: ${score}/${parkCards.length}`
-
-        console.log("game over")
     }
 })
 
@@ -163,6 +162,9 @@ nextButton.addEventListener("click", evt => {
 backButton.addEventListener("click", evt => {
     evt.preventDefault();
     answerText.innerText = '';
+    showDescription.innerText = '';
+    showDescription.classList.remove("answer-container")
+    answerText.classList.remove("green")
     activeCard--;
     deleteChild();
     displayQuestionCard();
