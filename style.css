@@ -26,8 +26,10 @@ header {
 
 h2 {
     font-size: 38px;
-    padding: .5rem;
+    padding: 0 1rem;
     text-align: center;
+    margin: 0 auto;
+    line-height: 46px;
 }
 
 h3 {
@@ -192,6 +194,14 @@ li {
     margin-top: 10px;
   }
 
+  .end-tag-text {
+      font-size: 28px;
+      line-height: 38px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 1rem;
+  }
+
 
   @media screen and (min-width: 576px) {
     .wrapper {
@@ -204,6 +214,7 @@ li {
     }
     .card-container {
         padding: 2em;
+        min-width: 500px;
     }
     .question-title {
         font-size: 32px;

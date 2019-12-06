@@ -153,7 +153,7 @@ nextButton.addEventListener("click", evt => {
     } else if (activeCard === parkCards.length) {
         const cardContainer = document.querySelector(".card-container")
         //cardContainer.innerText = '';
-        cardContainer.innerHTML = "<h3 class='whatever'>Thanks for playing!</h3><p>Hello</p>"
+        cardContainer.innerHTML = `<h2 class='whatever'>Thanks for playing!</h2><div class='end-tag-text'>Your Final Score:<br><span>${score}/${parkCards.length}</span></div>`
     }
 })
 
