@@ -190,20 +190,15 @@ li {
     margin-top: 10px;
   }
 
-.active, .btn:active {
-    background-color:#F08080;
-    color: rgb(148, 24, 24);
-    border: 1px solid rgb(148, 24, 24);
-  }
-.active, .answer-correct:hover {
-    background-color: #dff0d8;
-    color: #00403C;
-    border: 1px solid #00403C;
-}
 
   @media screen and (min-width: 576px) {
     .wrapper {
         padding: 2em;
+        display: flex;
+        flex-flow: nowrap;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
     }
     .card-container {
         padding: 2em;
@@ -223,7 +218,7 @@ li {
         justify-content: center;
     }
 
-    .btn {
+    .answers {
         width: 300px;
         height: 250px;
         margin: 10px;
