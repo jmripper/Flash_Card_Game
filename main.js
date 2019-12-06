@@ -92,9 +92,12 @@ function displayQuestionCard() {
         //create li list for answer choices
         cardAnswerList.forEach(choice => {
             let answerItem = document.createElement("li")
+            const image = document.createElement("img")
             let answerDescription = card.rightAnswerInfo
-            console.log(answerDescription)
             answerItem.className = "answers"
+            answerItem.appendChild(image)
+            image.setAttribute("src","imageURL");
+            console.log(answerItem.outerHTML)
                 //event click listener for each li answer choice
                 answerItem.addEventListener("click", evt => {
                     const userAnswer = evt.target.innerText;
@@ -153,7 +156,7 @@ nextButton.addEventListener("click", evt => {
     } else if (activeCard === parkCards.length) {
         const cardContainer = document.querySelector(".card-container")
         //cardContainer.innerText = '';
-        cardContainer.innerHTML = `<h2 class='whatever'>Thanks for playing!</h2><div class='end-tag-text'>Your Final Score:<br><span>${score}/${parkCards.length}</span></div>`
+        cardContainer.innerHTML = `<h2 class='whatever'>Thanks for playing!</h2><div class='end-tag-text'>Your Final Score:<br><span class='final-score'>${score}/${parkCards.length}</span></div>`
     }
 })
 

@@ -196,10 +196,16 @@ li {
 
   .end-tag-text {
       font-size: 28px;
-      line-height: 38px;
+      line-height: 48px;
       margin: 0 auto;
       text-align: center;
-      padding: 1rem;
+      padding: 2rem 1rem;
+  }
+
+ .final-score {
+      font-weight: 700;
+      margin: 1rem auto;
+
   }
 
 
