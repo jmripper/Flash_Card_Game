@@ -6,7 +6,6 @@ class questionCard {
         this.rightAnswer = rightAnswer
         this.rightAnswerInfo = rightAnswerInfo   
     }
-
     isAnswerCorrect(clickedAnswer) {
         if (clickedAnswer === this.rightAnswer) {
             return true
@@ -14,7 +13,6 @@ class questionCard {
             return false;}
     }
 }
-
 
 //new array with class questionCard and its properties, question, answerChoice, rightAnswer
 const parkCards = [
@@ -50,8 +48,8 @@ const parkCards = [
     ["Belmont-Paul Women's Equality National Monument", "Thaddeus Kosciuszko National Memorial", "General Grant National Memorial", "African Burial Ground Monument"], "Thaddeus Kosciuszko National Memorial", "The smallest site in the National Park System, the Thaddeus Kościuszko National Memorial in downtown Philadelphia, honors a Polish freedom fighter who helped American colonists during the Revolutionary War and preserves the sweeping history of his life in only about 80 square meters of space."),
 
     new questionCard("Which was the first national park established for the purpose of protecting man-made structures?",
-    ["National Mall and Memorial Parks", "New River Gorge", "Mesa Verde Natiaonal Park", "For Caroline National Park"], 
-    "Mesa Verde Natiaonal Park", "In June 1906 President Theodore Roosevelt signed the bill that established Mesa Verde National Park in southwestern Colorado to protect Ancestral Puebloan archaeological sites."),
+    ["National Mall and Memorial Parks", "New River Gorge", "Mesa Verde National Park", "For Caroline National Park"], 
+    "Mesa Verde National Park", "In June 1906 President Theodore Roosevelt signed the bill that established Mesa Verde National Park in southwestern Colorado to protect Ancestral Puebloan archaeological sites."),
 
     new questionCard("Which national park site contains the most lighthouses?",
     ["Cape Cod National Seashore", "Pt. Reyes Natiaonl Seashores", "Ise Royale National Park", "Apostle Island National Lakeshore"], 
@@ -60,7 +58,6 @@ const parkCards = [
 
 let activeCard = 0
 let score = 0
-let questionNumber = 0
 
 const questionTitle = document.querySelector(".question-title")
 const answerChoices = document.querySelector(".answer-choices")
@@ -88,7 +85,7 @@ function displayQuestionCard() {
         }
 
         const cardAnswerList = card.answerchoice
-        let answerDescription = card.rightAnswerInfo
+        //let answerDescription = card.rightAnswerInfo
         //create li list for answer choices
         cardAnswerList.forEach(choice => {
             let answerItem = document.createElement("li")
@@ -96,7 +93,7 @@ function displayQuestionCard() {
             let answerDescription = card.rightAnswerInfo
             answerItem.className = "answers"
             answerItem.appendChild(image)
-            image.setAttribute("src","imageURL");
+            //image.setAttribute("src")
             console.log(answerItem.outerHTML)
                 //event click listener for each li answer choice
                 answerItem.addEventListener("click", evt => {
@@ -112,24 +109,21 @@ function displayQuestionCard() {
                         showDescription.innerText = answerDescription
                         score++
                         showScore()
-
                     } else if (card.isAnswerCorrect(userAnswer) == false) {
                         answerItem.classList.add("answer-wrong")
                         answerItem.classList.remove("answers")
-                        //answerText.innerText = "Sorry, Try Again"
                         showScore()
                     } 
                 },{once: true})
             answerList.appendChild(answerItem)
             //add answerchoice values to li elements created
             answerItem.innerHTML = choice
-        //}
     })        
 }
 displayQuestionCard();
 
 function showScore() {
-    const scoreText = document.getElementById("score")
+    const scoreText = document.getElementById("score");
     scoreText.style.display = "block";
     scoreText.innerText = `Score: ${score}/${parkCards.length}`
 }
@@ -138,8 +132,8 @@ function showScore() {
 function deleteChild() {   
         let first = answerList.firstElementChild; 
         while (first) { 
-            first.remove(); 
-            first = answerList.firstElementChild;} 
+        first.remove(); 
+        first = answerList.firstElementChild;} 
 } 
 
 //next question button event click listener
@@ -155,7 +149,6 @@ nextButton.addEventListener("click", evt => {
         return displayQuestionCard();
     } else if (activeCard === parkCards.length) {
         const cardContainer = document.querySelector(".card-container")
-        //cardContainer.innerText = '';
         cardContainer.innerHTML = `<h2 class='whatever'>Thanks for playing!</h2><div class='end-tag-text'>Your Final Score:<br><span class='final-score'>${score}/${parkCards.length}</span></div>`
     }
 })
@@ -170,7 +163,9 @@ backButton.addEventListener("click", evt => {
     activeCard--;
     deleteChild();
     displayQuestionCard();
-
 })
 
+const imageArray = ['/images/Denali.png','/images/grandCayon.png','/images/EvergladesPark.png','/images/','/images/','/images/','/images/'
 
+]
+console.log(imageArray)
