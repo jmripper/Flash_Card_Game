@@ -47,8 +47,7 @@ const parkCards = [
     "Denali National Park", "Formerly known as Mount McKinley, Denali is the tallest mountain in North America with a peak elevation of 20,310 feet."),
 
     new questionCard("Which is the smallest national park site?",
-    ["Belmont-Paul Women's Equality National Monument", "Thaddeus Kosciuszko National Memorial", "General Grant National Memorial", "African Burial Ground Monument"], 
-    "Thaddeus Kosciuszko National Memorial"),
+    ["Belmont-Paul Women's Equality National Monument", "Thaddeus Kosciuszko National Memorial", "General Grant National Memorial", "African Burial Ground Monument"], "Thaddeus Kosciuszko National Memorial", "The smallest site in the National Park System, the Thaddeus Kościuszko National Memorial in downtown Philadelphia, honors a Polish freedom fighter who helped American colonists during the Revolutionary War and preserves the sweeping history of his life in only about 80 square meters of space."),
 
     new questionCard("Which was the first national park established for the purpose of protecting man-made structures?",
     ["National Mall and Memorial Parks", "New River Gorge", "Mesa Verde Natiaonal Park", "For Caroline National Park"], 
