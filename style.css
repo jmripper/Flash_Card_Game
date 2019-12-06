@@ -103,8 +103,10 @@ main {
     margin: 0 auto;
 }
 
+
 .green {
     color: #3c763d;
+    font-weight: 600;
 }
 
 .red {
@@ -137,6 +139,13 @@ main {
     cursor: pointer;
     border-radius: 10px;
     margin-top: 10px;
+}
+
+.answer-container {
+    border: 1px solid #3c763d;
+    font-size: 16px;
+    border-radius: 10px;
+    padding:1rem;
 }
 
 .button-container {

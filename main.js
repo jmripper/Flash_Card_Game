@@ -52,7 +52,7 @@ const parkCards = [
 
     new questionCard("Which was the first national park established for the purpose of protecting man-made structures?",
     ["National Mall and Memorial Parks", "New River Gorge", "Mesa Verde Natiaonal Park", "For Caroline National Park"], 
-    "Mesa Verde Natiaonal Park"),
+    "Mesa Verde Natiaonal Park", "In June 1906 President Theodore Roosevelt signed the bill that established Mesa Verde National Park in southwestern Colorado to protect Ancestral Puebloan archaeological sites."),
 
     new questionCard("Which national park site contains the most lighthouses?",
     ["Cape Cod National Seashore", "Pt. Reyes Natiaonl Seashores", "Ise Royale National Park", "Apostle Island National Lakeshore"], 
@@ -70,6 +70,7 @@ const nextButton = document.getElementById("next-question-button")
 const backButton = document.getElementById("prev-question-button")
 const answerList = document.getElementById("answer-list")
 const answerText = document.querySelector(".answer-text")
+const showDescription = document.querySelector(".description")
 
 //console.log(card)
 
@@ -88,9 +89,12 @@ function displayQuestionCard() {
         }
 
         const cardAnswerList = card.answerchoice
+        let answerDescription = card.rightAnswerInfo
         //create li list for answer choices
         cardAnswerList.forEach(choice => {
             let answerItem = document.createElement("li")
+            let answerDescription = card.rightAnswerInfo
+            console.log(answerDescription)
             answerItem.className = "answers"
                 //event click listener for each li answer choice
                 answerItem.addEventListener("click", evt => {
@@ -101,6 +105,8 @@ function displayQuestionCard() {
                         answerText.classList.add("green")
                         answerText.classList.remove("red")
                         answerText.innerText = "Your Right"
+                        showDescription.classList.add("answer-container")
+                        showDescription.innerText = answerDescription
                         score++
                         showScore()
 
@@ -140,12 +146,13 @@ nextButton.addEventListener("click", evt => {
         activeCard++;
         deleteChild();
         answerText.innerText = '';
+        showDescription.innerText = '';
     if (activeCard !== parkCards.length) {
         return displayQuestionCard();
     } else if (activeCard === parkCards.length) {
         const cardContainer = document.querySelector(".card-container")
         //cardContainer.innerText = '';
-        cardContainer.innerHTML = "<h3></h3>Thanks for playing!</h3>"
+        cardContainer.innerHTML = "<h3 class='whatever'>Thanks for playing!</h3><p>Hello</p>"
         //cardContainer.innerHTML = `Your Final Score: ${score}/${parkCards.length}`
 
         console.log("game over")
