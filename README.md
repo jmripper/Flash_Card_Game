@@ -2,7 +2,7 @@
 
 Test your knowledge of our nations National Parks with a fun interactive quiz.
 
-### Languages Used
+## Languages Used
 - HTML
 - CSS
 - Vanilla Javascript
