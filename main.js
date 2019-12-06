@@ -1,10 +1,10 @@
 //class questionCard with properties to ask the question, give answer choices and provide the correct answer
 class questionCard {
-    constructor(question,answerChoice,rightAnswer) {
+    constructor(question,answerChoice,rightAnswer,rightAnswerInfo) {
         this.question = question
         this.answerchoice = answerChoice
         this.rightAnswer = rightAnswer
-        
+        this.rightAnswerInfo = rightAnswerInfo   
     }
 
     isAnswerCorrect(clickedAnswer) {
@@ -20,7 +20,7 @@ class questionCard {
 const parkCards = [
     new questionCard("What state contains the most national parks?",
     ["Alaska", "Colorado","Utah", "California"], 
-    "California"),
+    "California", ),
 
     new questionCard("What was the first National Park?",
     ["Dealth Valley National Park", "Yosemite National Park", "Acadia National Park", "Yellowstone National Park"],
@@ -103,14 +103,15 @@ function displayQuestionCard() {
                         answerText.innerText = "Your Right"
                         score++
                         showScore()
+
                     } else if (card.isAnswerCorrect(userAnswer) == false) {
                         answerItem.classList.add("answer-wrong")
                         answerItem.classList.remove("answers")
                         answerText.classList.add("red")
-                        answerText.innerText = "Sorry, Try Again"
+                        //answerText.innerText = "Sorry, Try Again"
                         showScore()
                     } 
-                })
+                },{once: true})
             answerList.appendChild(answerItem)
             //add answerchoice values to li elements created
             answerItem.innerHTML = choice
