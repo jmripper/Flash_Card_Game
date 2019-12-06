@@ -20,31 +20,31 @@ class questionCard {
 const parkCards = [
     new questionCard("What state contains the most national parks?",
     ["Alaska", "Colorado","Utah", "California"], 
-    "California", ),
+    "California", "With the creation of Pinnacles National Park in 2013, California broke its 8-8 tie with Alaska to become the state with the most national parks. In addition to its nine national parks, California also maintains over 20 National Park System-administered areas including multiple National Monuments, National Historic Trails, National Historic Sites and more."),
 
     new questionCard("What was the first National Park?",
     ["Dealth Valley National Park", "Yosemite National Park", "Acadia National Park", "Yellowstone National Park"],
-    "Yellowstone National Park"),
+    "Yellowstone National Park", "Yellowstone National Park, located in Wyoming, Montana and Idaho, was signed into law by President Ulysses S. Grant in 1872, becoming the first national park in America and in the world."),
 
     new questionCard("What national park is home to the longest cave system in the world?",
     ["Mammoth Cave National Park", "Canyonlands National Park", "Carlsbad Caverns National Park", "Great Basin National Park"], 
-    "Mammoth Cave National Park"),
+    "Mammoth Cave National Park", "Mammoth Cave National Park in Kentucky is home to the world's longest known cave system, which measures more than 400 miles long. The park offers a variety of guided cave tours – including a ranger-led nature trek for kids – as well as camping, horseback riding, biking and other activities to explore the beauty of Kentucky's Green River Valley."),
 
     new questionCard("What national park is home to the world's largest tree by volume?",
     ["Red Wood National Park", "Joshua Tree National Park", "California's Sequoia National Park", "Everglades National Park"], 
-    "California's Sequoia National Park"),
+    "California's Sequoia National Park", "The General Sherman Tree located in California's Sequoia National Park is the largest tree by volume in the world. This massive tree measures a whopping 275 feet tall and 25 feet wide, resulting in a trunk volume of 52,513 cubic feet. It is also one of the oldest trees on the planet with an estimated age of 2,300-2,700 years old."),
 
     new questionCard("What is the most visited national park?",
     ["The Great Smoky Mountains", "The Grand Canyon", "Yosemite National Park", "Rocky Mountain National Park"], 
-    "The Great Smoky Mountains"),
+    "The Great Smoky Mountains", "In 2015 alone, parks across the U.S. drew more than 307.2 million visits. That's almost one visit per every person in America! Of these visits, over 10 million of them were to The Great Smoky Mountains – almost twice as much as the 5.5 million visits to the second most popular park, The Grand Canyon."),
 
     new questionCard("What is the least visited national park?",
     ["Dry Tortugas National Park", "Isle Royale National Park", "North Cascades National Park", "Black Canyon of the Gunnison National Park"], 
-    "Isle Royale National Park"),
+    "Isle Royale National Park", "According to the National Park Service Visitor Statistics, Michigan's Isle Royale National Park saw only 18,684 recreational visits in 2015. This is due largely to the fact that the remote park is accessible only by boat or seaplane."),
 
     new questionCard("What National Park contains the highest peak in North America?",
     ["Grand Teton National Park", "Hawaii Volcanoes National Park", "Mount Rainier National Park", "Denali National Park"], 
-    "Denali National Park"),
+    "Denali National Park", "Formerly known as Mount McKinley, Denali is the tallest mountain in North America with a peak elevation of 20,310 feet."),
 
     new questionCard("Which is the smallest national park site?",
     ["Belmont-Paul Women's Equality National Monument", "Thaddeus Kosciuszko National Memorial", "General Grant National Memorial", "African Burial Ground Monument"], 
@@ -56,7 +56,7 @@ const parkCards = [
 
     new questionCard("Which national park site contains the most lighthouses?",
     ["Cape Cod National Seashore", "Pt. Reyes Natiaonl Seashores", "Ise Royale National Park", "Apostle Island National Lakeshore"], 
-    "Apostle Island National Lakeshore"),
+    "Apostle Island National Lakeshore", "Nine of the 50 lighthouses cared for by the National Park Service are located within Apostle Islands National Lakeshore in Wisconsin, making it the national park site with the most lighthouses. All of them were built in the 19th century, and some are still in service today."),
 ];
 
 let activeCard = 0
@@ -104,7 +104,8 @@ function displayQuestionCard() {
                         answerItem.classList.add("answer-correct")
                         answerText.classList.add("green")
                         answerText.classList.remove("red")
-                        answerText.innerText = "Your Right"
+                        answerItem.classList.remove("answers")
+                        answerText.innerText = "Correct! Your Right"
                         showDescription.classList.add("answer-container")
                         showDescription.innerText = answerDescription
                         score++
@@ -113,7 +114,6 @@ function displayQuestionCard() {
                     } else if (card.isAnswerCorrect(userAnswer) == false) {
                         answerItem.classList.add("answer-wrong")
                         answerItem.classList.remove("answers")
-                        answerText.classList.add("red")
                         //answerText.innerText = "Sorry, Try Again"
                         showScore()
                     } 

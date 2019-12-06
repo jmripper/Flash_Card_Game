@@ -103,10 +103,10 @@ main {
     margin: 0 auto;
 }
 
-
 .green {
     color: #3c763d;
     font-weight: 600;
+    padding: 0 15px 15px;
 }
 
 .red {
@@ -116,7 +116,6 @@ main {
 .answer-text {
     text-align: center;
     font-size: 18px;
-    padding: 0 0 10px;
     outline: none;
 }
 
@@ -145,7 +144,10 @@ main {
     border: 1px solid #3c763d;
     font-size: 16px;
     border-radius: 10px;
-    padding:1rem;
+    padding:1.4rem;
+    margin: 0 auto;
+    width: 95%;
+    line-height: 22px;
 }
 
 .button-container {
@@ -153,7 +155,7 @@ main {
     flex-flow: nowrap;
     justify-content: center;
     width: 80%;
-    padding: 0px;
+    padding: 20px 0 10px;
     margin: 0 auto;
 }
 
@@ -257,6 +259,8 @@ li {
         margin: 15px;
         padding: 20px;
         font-size: 18px;
-
+    }
+    .answer-container {
+        width: 80%;
     }
   }
