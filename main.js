@@ -17,7 +17,7 @@ class questionCard {
 //new array with class questionCard and its properties, question, answerChoice, rightAnswer
 const parkCards = [
     new questionCard("What state contains the most national parks?",
-    ["Alaska", "Colorado","Utah", "California"], 
+    ["Alaska", "Colorado", "Utah", "California"], 
     "California", "With the creation of Pinnacles National Park in 2013, California broke its 8-8 tie with Alaska to become the state with the most national parks. In addition to its nine national parks, California also maintains over 20 National Park System-administered areas including multiple National Monuments, National Historic Trails, National Historic Sites and more."),
 
     new questionCard("What was the first National Park?",
@@ -42,6 +42,7 @@ const parkCards = [
 
     new questionCard("What National Park contains the highest peak in North America?",
     ["Grand Teton National Park", "Hawaii Volcanoes National Park", "Mount Rainier National Park", "Denali National Park"], 
+    ['/images/Denali.png'], 
     "Denali National Park", "Formerly known as Mount McKinley, Denali is the tallest mountain in North America with a peak elevation of 20,310 feet."),
 
     new questionCard("Which is the smallest national park site?",
@@ -56,8 +57,11 @@ const parkCards = [
     "Apostle Island National Lakeshore", "Nine of the 50 lighthouses cared for by the National Park Service are located within Apostle Islands National Lakeshore in Wisconsin, making it the national park site with the most lighthouses. All of them were built in the 19th century, and some are still in service today."),
 ];
 
+const imageArray = ['images/alaskaflag.png', 'images/coloradoflag.png']
+
 let activeCard = 0
 let score = 0
+let imageIndex = 0
 
 const questionTitle = document.querySelector(".question-title")
 const answerChoices = document.querySelector(".answer-choices")
@@ -68,33 +72,29 @@ const answerList = document.getElementById("answer-list")
 const answerText = document.querySelector(".answer-text")
 const showDescription = document.querySelector(".description")
 
-//console.log(card)
 
 function displayQuestionCard() {
         //seperates out each question object from the array of parkCards starting at card 0 in the parkCards array
         const card = parkCards[activeCard]
         const currentQuestion = card.question;
+        const cardAnswerList = card.answerchoice
         questionTitle.innerHTML = currentQuestion
         
         //creates next question button
         nextButton.setAttribute("class", "button-style")
         nextButton.innerText = "Next Question"
         //once pass the first card show back button
-        if (activeCard > 0) {
+        if (activeCard > 0 ) {
             backButton.setAttribute("class", "button-style")
         }
-
-        const cardAnswerList = card.answerchoice
-        //let answerDescription = card.rightAnswerInfo
+        
         //create li list for answer choices
         cardAnswerList.forEach(choice => {
             let answerItem = document.createElement("li")
-            const image = document.createElement("img")
             let answerDescription = card.rightAnswerInfo
+            let image = document.createElement("img")
+            image.setAttribute("src", imageArray[imageIndex])
             answerItem.className = "answers"
-            answerItem.appendChild(image)
-            //image.setAttribute("src")
-            console.log(answerItem.outerHTML)
                 //event click listener for each li answer choice
                 answerItem.addEventListener("click", evt => {
                     const userAnswer = evt.target.innerText;
@@ -115,9 +115,11 @@ function displayQuestionCard() {
                         showScore()
                     } 
                 },{once: true})
-            answerList.appendChild(answerItem)
-            //add answerchoice values to li elements created
-            answerItem.innerHTML = choice
+            answerItem.appendChild(image)
+            answerItem.innerText = choice;
+            answerList.appendChild(answerItem);
+            console.log(answerItem.outerHTML)
+        
     })        
 }
 displayQuestionCard();
@@ -149,7 +151,7 @@ nextButton.addEventListener("click", evt => {
         return displayQuestionCard();
     } else if (activeCard === parkCards.length) {
         const cardContainer = document.querySelector(".card-container")
-        cardContainer.innerHTML = `<h2 class='whatever'>Thanks for playing!</h2><div class='end-tag-text'>Your Final Score:<br><span class='final-score'>${score}/${parkCards.length}</span></div>`
+        cardContainer.innerHTML = `<h2 class='whatever'>Thanks for playing!</h2><div class='end-tag-text'>Your Final Score:<br><span class='final-score'>${score}/${parkCards.length}</span></div><div class='end-btn'><a class='try-again-btn' href='/index.html'>Ready to Try Again?</a></div>`
     }
 })
 
@@ -165,7 +167,9 @@ backButton.addEventListener("click", evt => {
     displayQuestionCard();
 })
 
-const imageArray = ['/images/Denali.png','/images/grandCayon.png','/images/EvergladesPark.png','/images/','/images/','/images/','/images/'
-
-]
+imageArray.forEach(image => {
+    image.src = image[imageIndex];
+})
 console.log(imageArray)
+
+
