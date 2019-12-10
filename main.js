@@ -1,8 +1,9 @@
 //class questionCard with properties to ask the question, give answer choices and provide the correct answer
 class questionCard {
-    constructor(question,answerChoice,rightAnswer,rightAnswerInfo) {
+    constructor(question,answerChoice,choiceImages,rightAnswer,rightAnswerInfo) {
         this.question = question
         this.answerchoice = answerChoice
+        this.choiceImages = choiceImages
         this.rightAnswer = rightAnswer
         this.rightAnswerInfo = rightAnswerInfo   
     }
@@ -17,7 +18,7 @@ class questionCard {
 //new array with class questionCard and its properties, question, answerChoice, rightAnswer
 const parkCards = [
     new questionCard("What state contains the most national parks?",
-    ["Alaska", "Colorado", "Utah", "California"], 
+    ["Alaska", "Colorado", "Utah", "California"], ['images/alaskaglag.png','images/coloradoflaf.png','images/utahflag.png','images/califroniaflag.png'],
     "California", "With the creation of Pinnacles National Park in 2013, California broke its 8-8 tie with Alaska to become the state with the most national parks. In addition to its nine national parks, California also maintains over 20 National Park System-administered areas including multiple National Monuments, National Historic Trails, National Historic Sites and more."),
 
     new questionCard("What was the first National Park?",
@@ -84,17 +85,22 @@ function displayQuestionCard() {
         nextButton.setAttribute("class", "button-style")
         nextButton.innerText = "Next Question"
         //once pass the first card show back button
-        if (activeCard > 0 ) {
+        if (activeCard > 0 && activeCard < 9 ) {
             backButton.setAttribute("class", "button-style")
-        }
+        } //else {
+            //backButton.style.pointerEvents = "none";
+        //}
         
         //create li list for answer choices
         cardAnswerList.forEach(choice => {
             let answerItem = document.createElement("li")
             let answerDescription = card.rightAnswerInfo
-            let image = document.createElement("img")
-            image.setAttribute("src", imageArray[imageIndex])
             answerItem.className = "answers"
+            showScore();
+
+            
+            console.log(answerItem)
+
                 //event click listener for each li answer choice
                 answerItem.addEventListener("click", evt => {
                     const userAnswer = evt.target.innerText;
@@ -107,20 +113,20 @@ function displayQuestionCard() {
                         answerText.innerText = "Correct! Your Right"
                         showDescription.classList.add("answer-container")
                         showDescription.innerText = answerDescription
-                        score++
-                        showScore()
+                        score++;
                     } else if (card.isAnswerCorrect(userAnswer) == false) {
                         answerItem.classList.add("answer-wrong")
                         answerItem.classList.remove("answers")
-                        showScore()
                     } 
                 },{once: true})
+            
+            answerItem.textContent = choice;
+            answerList.append(answerItem);
+            let image = document.createElement('image')
+            image.setAttribute('src', "https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwiB94HIzKnmAhXDm-AKHTzwB8AQjRx6BAgBEAQ&url=https%3A%2F%2Fforrestgump.fandom.com%2Fwiki%2FJenny_Curran&psig=AOvVaw0eICTOzG_o2qIFUz_CyOY7&ust=1576016349561377")
             answerItem.appendChild(image)
-            answerItem.innerText = choice;
-            answerList.appendChild(answerItem);
-            console.log(answerItem.outerHTML)
-        
-    })        
+            //answerList.append(image)
+    })       
 }
 displayQuestionCard();
 
@@ -166,10 +172,4 @@ backButton.addEventListener("click", evt => {
     deleteChild();
     displayQuestionCard();
 })
-
-imageArray.forEach(image => {
-    image.src = image[imageIndex];
-})
-console.log(imageArray)
-
 
