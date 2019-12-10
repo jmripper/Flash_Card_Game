@@ -79,6 +79,7 @@ function displayQuestionCard() {
         const card = parkCards[activeCard]
         const currentQuestion = card.question;
         const cardAnswerList = card.answerchoice
+        const imageChoice = card.choiceImages
         questionTitle.innerHTML = currentQuestion
         
         //creates next question button
@@ -94,11 +95,13 @@ function displayQuestionCard() {
         //create li list for answer choices
         cardAnswerList.forEach(choice => {
             let answerItem = document.createElement("li")
+            let image = document.createElement('img')
             let answerDescription = card.rightAnswerInfo
             answerItem.className = "answers"
+            image.className = "sizing"
             showScore();
 
-            
+            console.log(imageChoice)
             console.log(answerItem)
 
                 //event click listener for each li answer choice
@@ -122,10 +125,8 @@ function displayQuestionCard() {
             
             answerItem.textContent = choice;
             answerList.append(answerItem);
-            let image = document.createElement('image')
-            image.setAttribute('src', "https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwiB94HIzKnmAhXDm-AKHTzwB8AQjRx6BAgBEAQ&url=https%3A%2F%2Fforrestgump.fandom.com%2Fwiki%2FJenny_Curran&psig=AOvVaw0eICTOzG_o2qIFUz_CyOY7&ust=1576016349561377")
+            image.setAttribute('src', "/images/Denali.png")
             answerItem.appendChild(image)
-            //answerList.append(image)
     })       
 }
 displayQuestionCard();
