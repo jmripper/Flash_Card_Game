@@ -227,8 +227,8 @@ li {
   }
 
   .sizing {
-      width: 150px;
-      display: flex;
+      width: 170px;
+      display: none;
       flex-flow: wrap;
       justify-content: center;
       align-items: center;
@@ -265,9 +265,13 @@ li {
     }
 
     .answers {
-        width: 300px;
+        width: 320px;
         height: 250px;
         margin: 10px;
+        display: flex;
+        flex-flow: column;
+        justify-content: center;
+        align-items: center;
         text-align: center;
     }
     .answer-wrong {
@@ -281,10 +285,6 @@ li {
         width: 300px;
         height: 250px;
         margin: 10px;
-        display: flex;
-        flex-flow: nowrap;
-        justify-content: center;
-        align-items: baseline ;
         text-align: center;
     }
     #score {
@@ -298,5 +298,9 @@ li {
     }
     .answer-container {
         width: 80%;
+    }
+
+    .sizing {
+        display: flex;
     }
   }
