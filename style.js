@@ -110,8 +110,9 @@ const answerChoices = document.querySelector(".answer-choices")
 const buttonContainer = document.querySelector(".button-container")
 const nextButton = document.getElementById("next-question-button")
 const backButton = document.getElementById("prev-question-button")
-const answerList = document.getElementById("answer-list")
-const answerText = document.querySelector(".answer-text")
+const answerList = document.querySelectorAll(".answers")
+const answerItem = Array.from(answerList);
+const classAnswerList = document.querySelector(".answer-list")
 const showDescription = document.querySelector(".description")
 
 const parkQuiz = new Quiz
@@ -119,13 +120,13 @@ parkQuiz.addQuestions(parkCards)
 //console.log(parkQuiz)
 //questionTitle.innerHTML = parkQuiz.questionsArray[0][0].questions;
 const card = parkCards[activeCard]
-console.log(card)
+//console.log(answerItem)
 
 function displayQuestionCard() {
     //variables
     const answerChoices = card.answerChoice
-    //const imageChoices = card.choiceImages
-    console.log(answerChoices)
+    const imageChoices = card.choiceImages
+    console.log(imageChoices)
     //sets question for the card
     questionTitle.innerHTML = card.question;
 
@@ -133,24 +134,25 @@ function displayQuestionCard() {
 
     showScore();
     
-    
-      for (let i = 0; i < answerChoices.length; i++) {
-        const answerChoice = answerChoices[i];
+
+      for (let i = 0; i < answerItem.length; i++) {
+        const answerChoice = answerItem[i];
         console.log(answerChoice)
-        let answerItem = document.createElement("div")
+        answerChoice.innerHTML = answerChoices[i]
 
-        // if (answerChoices < 3) {
-        //     let answerItem = document.createElement("li")
+        let image = document.createElement('img')
+        image.src
+        image.className = "sizing"
+        image.setAttribute('src', imageChoices[i])
+        answerChoice.appendChild(image);
+        
+        
 
-             answerItem.className = "answers"
-             answerItem.textContent = answerChoice;
-
-        // }
 
         
             
         
-        answerList.append(answerItem);
+        //answerList.append(answerItem);
         //questionTitle.innerHTML = questionCard.question;
         //console.log(card)
         
