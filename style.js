@@ -126,7 +126,7 @@ function displayQuestionCard() {
     //variables
     const answerChoices = card.answerChoice
     const imageChoices = card.choiceImages
-    console.log(imageChoices)
+    //console.log(imageChoices)
     //sets question for the card
     questionTitle.innerHTML = card.question;
 
@@ -134,10 +134,9 @@ function displayQuestionCard() {
 
     showScore();
     
-
       for (let i = 0; i < answerItem.length; i++) {
         const answerChoice = answerItem[i];
-        console.log(answerChoice)
+        //console.log(answerChoice)
         answerChoice.innerHTML = answerChoices[i]
 
         let image = document.createElement('img')
@@ -145,19 +144,10 @@ function displayQuestionCard() {
         image.className = "sizing"
         image.setAttribute('src', imageChoices[i])
         answerChoice.appendChild(image);
-        
-        
 
-
-        
-            
-        
-        //answerList.append(answerItem);
-        //questionTitle.innerHTML = questionCard.question;
-        //console.log(card)
         
     }
-     
+    checkAnswer();
 }
 displayQuestionCard();
 
@@ -204,25 +194,31 @@ backButton.addEventListener("click", evt => {
 })
 
 function checkAnswer() {
-    answerItem.addEventListener("click", evt => {
-        const userAnswer = evt.target.innerText;
-        //const li = document.getElementsByName("li")
-        //console.log(li)
-        //if user answer = right answer then
-        if (card.isAnswerCorrect(userAnswer) === true) {
-            answerItem.classList.add("answer-correct")
-            answerText.classList.add("green")
-            answerText.classList.remove("red")
-            answerItem.classList.remove("answers")
-            answerText.innerText = "Correct! Your Right"
-            showDescription.classList.add("answer-container")
-            showDescription.innerText = answerDescription
-            score++;
-        } else if (card.isAnswerCorrect(userAnswer) == false) {
-            answerItem.classList.add("answer-wrong")
-            answerItem.classList.remove("answers")
-        } 
-    },{once: true})
+    answerItem.forEach(choice => {
+        choice.addEventListener("click", evt => {
+            evt.preventDefault();
+            const userAnswer = evt.target.innerText;
+            //console.log(card.isAnswerCorrect(userAnswer))
+            //if user answer = right answer then
+            if (userAnswer === card.rightAnswer) {
+                console.log("correct!")
+                choice.classList.add("answer-correct")
+                choice.classList.add("green")
+                choice.classList.remove("red")
+                choice.classList.remove("answers")
+                // answerText.innerText = "Correct! Your Right"
+                showDescription.classList.add("answer-container")
+                showDescription.innerText = answerDescription
+                score++;
+            } else if (card.isAnswerCorrect(userAnswer) == false) {
+                // answerItem.classList.add("answer-wrong")
+                // answerItem.classList.remove("answers")
+            } 
+         },
+        //{once: true}
+        )
+    })
+    
 };
 
 function addButton() {
