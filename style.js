@@ -13,8 +13,19 @@ class questionCard {
         } else {
             return false;}
     }
-
 }
+
+class Quiz {
+    constructor() {
+      this.questionsArray = []
+      this.score = 0
+      this.activeCard
+    }
+
+    addQuestions(parkQuestions){
+      this.questionsArray.push(parkQuestions)
+    }
+  }
 
 const parkCards = [
     new questionCard (
@@ -103,13 +114,50 @@ const answerList = document.getElementById("answer-list")
 const answerText = document.querySelector(".answer-text")
 const showDescription = document.querySelector(".description")
 
+const parkQuiz = new Quiz
+parkQuiz.addQuestions(parkCards)
+//console.log(parkQuiz)
+//questionTitle.innerHTML = parkQuiz.questionsArray[0][0].questions;
+const card = parkCards[activeCard]
+console.log(card)
+
 function displayQuestionCard() {
-    const cardOne = parkCardOne[activeCard]
-    for (let i = 0; i < array.length; i++) {
-        const element = array[i];
+    //variables
+    const answerChoices = card.answerChoice
+    //const imageChoices = card.choiceImages
+    console.log(answerChoices)
+    //sets question for the card
+    questionTitle.innerHTML = card.question;
+
+    addButton();
+
+    showScore();
+    
+    
+      for (let i = 0; i < answerChoices.length; i++) {
+        const answerChoice = answerChoices[i];
+        console.log(answerChoice)
+        let answerItem = document.createElement("div")
+
+        // if (answerChoices < 3) {
+        //     let answerItem = document.createElement("li")
+
+             answerItem.className = "answers"
+             answerItem.textContent = answerChoice;
+
+        // }
+
+        
+            
+        
+        answerList.append(answerItem);
+        //questionTitle.innerHTML = questionCard.question;
+        //console.log(card)
         
     }
+     
 }
+displayQuestionCard();
 
 function showScore() {
     const scoreText = document.getElementById("score");
@@ -174,4 +222,24 @@ function checkAnswer() {
         } 
     },{once: true})
 };
-//console.log(cardOne)
+
+function addButton() {
+    //creates next question button
+    nextButton.setAttribute("class", "button-style")
+    nextButton.innerText = "Next Question"
+    //once pass the first card show back button
+    if (activeCard > 0 && activeCard < 9 ) {
+        backButton.setAttribute("class", "button-style")
+    }
+}
+
+// function setImages() {
+//     for (let j = 0; j < imageChoices.length; j++) {
+//         const imageChoice = imageChoices[j];
+//         let image = document.createElement('img')
+//         image.src
+//         image.className = "sizing"
+//         image.setAttribute('src', imageChoice)
+//         console.log(imageChoice)
+//     }
+// }
