@@ -15,16 +15,6 @@ class questionCard {
     }
 }
 
-class Quiz {
-    constructor() {
-      this.questionsArray = []
-    }
-
-    addQuestions(parkQuestions){
-      this.questionsArray.push(parkQuestions)
-    }
-  }
-
 const parkCards = [
     new questionCard (
         "What state contains the most national parks?",
@@ -50,7 +40,7 @@ const parkCards = [
     new questionCard (
         "What national park is home to the world's largest tree by volume?",
         ["Red Wood National Park", "Joshua Tree National Park", "California's Sequoia National Park", "Everglades National Park"], 
-        ['images/redwoodpark.png'],
+        ['images/redwoodpark.png', 'images/joshuatreepark.png', 'images/sequoia.png', 'images/EvergladesPark.png' ],
         "California's Sequoia National Park", 
         "The General Sherman Tree located in California's Sequoia National Park is the largest tree by volume in the world. This massive tree measures a whopping 275 feet tall and 25 feet wide, resulting in a trunk volume of 52,513 cubic feet. It is also one of the oldest trees on the planet with an estimated age of 2,300-2,700 years old."),
 
@@ -95,39 +85,36 @@ const parkCards = [
         [''], 
         "Apostle Island National Lakeshore", 
         "Nine of the 50 lighthouses cared for by the National Park Service are located within Apostle Islands National Lakeshore in Wisconsin, making it the national park site with the most lighthouses. All of them were built in the 19th century, and some are still in service today.")
-
 ]
 
-let activeCard = 0
-let score = 0
-    
 const questionTitle = document.querySelector(".question-title")
 const answerChoices = document.querySelector(".answer-choices")
 const buttonContainer = document.querySelector(".button-container")
-const nextButton = document.getElementById("next-question-button")
+const nextButton = document.querySelector("#next-question-button")
 const backButton = document.getElementById("prev-question-button")
 const answerList = document.querySelectorAll(".answers")
 const answerItem = Array.from(answerList);
 const classAnswerList = document.querySelector(".answer-list")
-const answerContainer = document.querySelector(".answer-container")
+const answerText = document.querySelector(".answer-text")
 const showDescription = document.querySelector(".description")
+const answerContainer = document.querySelector(".answer-container")
+const descriptionTitle = document.querySelector(".answer-title")
 const scoreText = document.querySelector("#score");
 
-const parkQuiz = new Quiz
-parkQuiz.addQuestions(parkCards)
-//console.log(parkQuiz)
-
+let activeCard = 0
+let score = 0
+let currentQuestion = parkCards[activeCard]
 
 function displayQuestionCard() {
     const card = parkCards[activeCard]
     const answerChoices = card.answerChoice
     const imageChoices = card.choiceImages
 
+    questionTitle.innerText = card.question;
+    //display score card
     scoreText.innerText = `Score: ${score}/${parkCards.length}`
 
-    questionTitle.innerHTML = card.question;
-
-      for (let i = 0; i < answerItem.length; i++) {
+    for (let i = 0; i < answerItem.length; i++) {
         const answerChoice = answerItem[i];
         answerChoice.innerHTML = answerChoices[i]
 
@@ -137,86 +124,53 @@ function displayQuestionCard() {
         image.setAttribute('src', imageChoices[i])
         answerChoice.appendChild(image);    
     }
-
 }
-displayQuestionCard();
-
-
-function deleteChild() {   
-    let first = answerList.firstElementChild; 
-    console.log(first)
-    while (first) { 
-    first.remove(); 
-    first = answerList.firstElementChild;} 
-} 
-
-//next question button event click listener
-nextButton.addEventListener("click", evt => {
-    evt.preventDefault();
-        activeCard++;
-        deleteChild();
-        //answerList.remove();
-        answerText.innerText = '';
-        //answerList.removeAttribute("class")
-        showDescription.innerText = '';
-        //answerItem.classList.remove()
-        //showDescription.removeAttribute("class")
-        //answerText.classList.remove("answer-container")
-    if (activeCard !== parkCards.length) {
-        return displayQuestionCard();
-    } else if (activeCard === parkCards.length) {
-        const cardContainer = document.querySelector(".card-container")
-        cardContainer.innerHTML = `<h2 class='whatever'>Thanks for playing!</h2><div class='end-tag-text'>Your Final Score:<br><span class='final-score'>${score}/${parkCards.length}</span></div><div class='end-btn'><a class='try-again-btn' href='/index.html'>Ready to Try Again?</a></div>`
-    }
-})
-
-//previous button event click listener
-backButton.addEventListener("click", evt => {
-    evt.preventDefault();
-    answerText.innerText = '';
-    showDescription.innerText = '';
-    showDescription.classList.remove("answer-container")
-    answerText.classList.remove("green")
-    activeCard--;
-    deleteChild();
-    displayQuestionCard();
-})
 
 function checkAnswer() {
-    answerItem.forEach(choice => {
+    answerItem.forEach(choice => { 
         choice.addEventListener("click", evt => {
             evt.preventDefault();
-            const userAnswer = evt.target.innerText;
-            const card = parkCards[activeCard]
-            //if user answer = right answer then
-            if (userAnswer === card.rightAnswer) {
+            nextButton.style.display = "block"
+
+            for (let j = 0; j < answerItem.length; j++) {
+                answerItem[j].style.pointerEvents = "none"
+            }
+
+            if (choice.innerText == parkCards[activeCard].rightAnswer) {
+                score++
                 choice.classList.add("answer-correct")
                 choice.classList.add("green")
-                choice.classList.remove("red")
                 choice.classList.remove("answers")
-                answerText.innerHTML = '<p class="answer-title">Correct! Your Right</p>'
+                descriptionTitle.innerText = "Correct! Your Right"
                 answerContainer.style.display = "block"
-                
 
-                let description = document.createElement('p')
-                description.className = "answer-text"
-                description.innerText = card.rightAnswerInfo
-                answerText.appendChild(description);
-                score++;
-                console.log(score)
-            } else if (userAnswer !== card.rightAnswer) {
-                 choice.classList.add("answer-wrong")
-                 choice.classList.remove("answers")
-            } 
-         },
-        )
+                showDescription.innerText = parkCards[activeCard].rightAnswerInfo
+            } else {
+                choice.classList.remove("answers")
+                choice.classList.add("answer-wrong")
+                answerContainer.style.display = "block"
+                descriptionTitle.innerText = `Incorrect. The correct answer is ${parkCards[activeCard].rightAnswer}`
+                showDescription.innerText = parkCards[activeCard].rightAnswerInfo
+            }
+        })
+
     })
-    
-};
-
-function addButton() {
-    //once pass the first card show back button
-    if (activeCard > 0 && activeCard < 9 ) {
-        backButton.setAttribute("class", "button-style")
-    }
 }
+
+function nextButtonFunction() {
+    nextButton.addEventListener("click", evt => {
+        evt.preventDefault();
+        activeCard++
+        for (let j = 0; j < answerItem.length; j++) {
+            answerItem[j].style.pointerEvents = "auto"
+        }
+        displayQuestionCard();
+        answerContainer.style.display = "none"
+
+        
+    })
+}
+
+displayQuestionCard();
+checkAnswer();
+nextButtonFunction();
