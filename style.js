@@ -18,8 +18,6 @@ class questionCard {
 class Quiz {
     constructor() {
       this.questionsArray = []
-      this.score = 0
-      this.activeCard
     }
 
     addQuestions(parkQuestions){
@@ -38,7 +36,7 @@ const parkCards = [
     new questionCard (
         "What was the first National Park?",
         ["Dealth Valley National Park", "Yosemite National Park", "Acadia National Park", "Yellowstone National Park"],
-        ['images/utahflag.png'],
+        ['images/dealthvalley.png', 'images/yosemite.png', 'images/acadia.png', 'images/yellowstone.png'],
         "Yellowstone National Park", 
         "Yellowstone National Park, located in Wyoming, Montana and Idaho, was signed into law by President Ulysses S. Grant in 1872, becoming the first national park in America and in the world."),
 
@@ -103,7 +101,6 @@ const parkCards = [
 
 let activeCard = 0
 let score = 0
-let imageIndex = 0
     
 const questionTitle = document.querySelector(".question-title")
 const answerChoices = document.querySelector(".answer-choices")
@@ -113,27 +110,28 @@ const backButton = document.getElementById("prev-question-button")
 const answerList = document.querySelectorAll(".answers")
 const answerItem = Array.from(answerList);
 const classAnswerList = document.querySelector(".answer-list")
+const answerText = document.querySelector(".answer-text")
 const showDescription = document.querySelector(".description")
+const scoreText = document.querySelector("#score");
 
 const parkQuiz = new Quiz
 parkQuiz.addQuestions(parkCards)
 //console.log(parkQuiz)
-//questionTitle.innerHTML = parkQuiz.questionsArray[0][0].questions;
-const card = parkCards[activeCard]
-//console.log(answerItem)
+
 
 function displayQuestionCard() {
+    const card = parkCards[activeCard]
     //variables
     const answerChoices = card.answerChoice
     const imageChoices = card.choiceImages
+    scoreText.innerText = `Score: ${score}/${parkCards.length}`
     //console.log(imageChoices)
     //sets question for the card
     questionTitle.innerHTML = card.question;
+    //console.log(parkQuiz.score)
 
     addButton();
 
-    showScore();
-    
       for (let i = 0; i < answerItem.length; i++) {
         const answerChoice = answerItem[i];
         //console.log(answerChoice)
@@ -143,22 +141,16 @@ function displayQuestionCard() {
         image.src
         image.className = "sizing"
         image.setAttribute('src', imageChoices[i])
-        answerChoice.appendChild(image);
-
-        
+        answerChoice.appendChild(image);    
     }
-    checkAnswer();
+     return checkAnswer();
 }
 displayQuestionCard();
 
-function showScore() {
-    const scoreText = document.getElementById("score");
-    scoreText.style.display = "block";
-    scoreText.innerText = `Score: ${score}/${parkCards.length}`
-}
 
 function deleteChild() {   
     let first = answerList.firstElementChild; 
+    console.log(first)
     while (first) { 
     first.remove(); 
     first = answerList.firstElementChild;} 
@@ -169,10 +161,13 @@ nextButton.addEventListener("click", evt => {
     evt.preventDefault();
         activeCard++;
         deleteChild();
+        //answerList.remove();
         answerText.innerText = '';
+        //answerList.removeAttribute("class")
         showDescription.innerText = '';
-        showDescription.classList.remove("answer-container")
-        answerText.classList.remove("green")
+        //answerItem.classList.remove()
+        //showDescription.removeAttribute("class")
+        //answerText.classList.remove("answer-container")
     if (activeCard !== parkCards.length) {
         return displayQuestionCard();
     } else if (activeCard === parkCards.length) {
@@ -198,46 +193,35 @@ function checkAnswer() {
         choice.addEventListener("click", evt => {
             evt.preventDefault();
             const userAnswer = evt.target.innerText;
-            //console.log(card.isAnswerCorrect(userAnswer))
+            const card = parkCards[activeCard]
             //if user answer = right answer then
             if (userAnswer === card.rightAnswer) {
-                console.log("correct!")
                 choice.classList.add("answer-correct")
                 choice.classList.add("green")
                 choice.classList.remove("red")
                 choice.classList.remove("answers")
-                // answerText.innerText = "Correct! Your Right"
-                showDescription.classList.add("answer-container")
-                showDescription.innerText = answerDescription
+                answerText.innerHTML = '<p class="answer-title">Correct! Your Right</p>'
+                answerText.classList.add("answer-container")
+
+                let description = document.createElement('p')
+                description.className = "answer-text"
+                description.innerText = card.rightAnswerInfo
+                answerText.appendChild(description);
                 score++;
-            } else if (card.isAnswerCorrect(userAnswer) == false) {
-                // answerItem.classList.add("answer-wrong")
-                // answerItem.classList.remove("answers")
+                console.log(score)
+            } else if (userAnswer !== card.rightAnswer) {
+                 choice.classList.add("answer-wrong")
+                 choice.classList.remove("answers")
             } 
          },
-        //{once: true}
         )
     })
     
 };
 
 function addButton() {
-    //creates next question button
-    nextButton.setAttribute("class", "button-style")
-    nextButton.innerText = "Next Question"
     //once pass the first card show back button
     if (activeCard > 0 && activeCard < 9 ) {
         backButton.setAttribute("class", "button-style")
     }
 }
-
-// function setImages() {
-//     for (let j = 0; j < imageChoices.length; j++) {
-//         const imageChoice = imageChoices[j];
-//         let image = document.createElement('img')
-//         image.src
-//         image.className = "sizing"
-//         image.setAttribute('src', imageChoice)
-//         console.log(imageChoice)
-//     }
-// }
