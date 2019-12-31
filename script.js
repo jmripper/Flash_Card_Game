@@ -163,11 +163,10 @@ function nextButtonFunction() {
         activeCard++
         for (let j = 0; j < answerItem.length; j++) {
             answerItem[j].style.pointerEvents = "auto"
+            answerItem[j].className = 'answers'
         }
         displayQuestionCard();
         answerContainer.style.display = "none"
-
-        
     })
 }
 

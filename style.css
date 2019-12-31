@@ -272,7 +272,7 @@ button {
     }
 
     .answers {
-        width: 310px;
+        width: 320px;
         height: 250px;
         margin: 10px;
         display: flex;
@@ -282,7 +282,7 @@ button {
         text-align: center;
     }
     .answer-wrong {
-        width: 310px;
+        width: 320px;
         height: 250px;
         margin: 10px;
         display: flex;
@@ -294,7 +294,7 @@ button {
     }
 
     .answer-correct {
-        width: 310px;
+        width: 320px;
         height: 250px;
         margin: 10px;
         display: flex;
