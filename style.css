@@ -163,7 +163,7 @@ main {
     flex-flow: nowrap;
     justify-content: center;
     width: 80%;
-    padding: 15px 0 10px;
+    padding: 0;
     margin: 0 auto;
 }
 
@@ -174,12 +174,16 @@ main {
     border-radius: 10px;
     color: #00403C;
     font-size: 14px;
-    font-weight: 500;
+    font-weight: 550;
     cursor: pointer;
     outline: none;
     display: none;
     outline: none;
   }
+
+.button-style:hover {
+    background-color: rgb(144, 194, 191);
+}
 
 button {
     display: none;
@@ -314,7 +318,7 @@ button {
         line-height: 34px;
     }
     .button-style {
-        margin: 5px;
+        margin: 15px auto 5px;
         padding: 20px;
         font-size: 18px;
     }
