@@ -61,7 +61,7 @@ const parkCards = [
     new questionCard (
         "What National Park contains the highest peak in North America?",
         ["Grand Teton National Park", "Hawaii Volcanoes National Park", "Mount Rainier National Park", "Denali National Park"], 
-        ['/images/grandteton2.png', 'images/hawaiivolcanoe.png', 'images/mountrainer.png', '/images/denali.png'], 
+        ['images/grandteton2.png', 'images/hawaiivolcanoe.png', 'images/mountrainer.png', 'images/denali.png'], 
         "Denali National Park", 
         "Formerly known as Mount McKinley, Denali is the tallest mountain in North America with a peak elevation of 20,310 feet."),
 
