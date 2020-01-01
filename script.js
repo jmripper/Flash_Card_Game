@@ -74,15 +74,15 @@ const parkCards = [
 
     new questionCard (
         "Which was the first national park established for the purpose of protecting man-made structures?",
-        ["National Mall and Memorial Parks", "New River Gorge", "Mesa Verde National Park", "For Caroline National Park"], 
-        [''],
+        ["National Mall and Memorial Parks", "New River Gorge National Park", "Mesa Verde National Park", "Fort Caroline National Park"], 
+        ['images/mallparks.png', 'images/newrivergorge.png', 'images/mesaverde.png', 'images/fortcaroline.png'],
         "Mesa Verde National Park", 
         "In June 1906 President Theodore Roosevelt signed the bill that established Mesa Verde National Park in southwestern Colorado to protect Ancestral Puebloan archaeological sites."),
 
     new questionCard (
         "Which national park site contains the most lighthouses?", 
         ["Cape Cod National Seashore", "Pt. Reyes Natiaonl Seashores", "Ise Royale National Park", "Apostle Island National Lakeshore"], 
-        [''], 
+        ['images/capecodenationalseashore.png', 'images/pointreyes.png','images/isleroyal2.png', 'images/apostleislands.png'], 
         "Apostle Island National Lakeshore", 
         "Nine of the 50 lighthouses cared for by the National Park Service are located within Apostle Islands National Lakeshore in Wisconsin, making it the national park site with the most lighthouses. All of them were built in the 19th century, and some are still in service today.")
 ]
