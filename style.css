@@ -203,7 +203,7 @@ button {
       line-height: 48px;
       margin: 0 auto;
       text-align: center;
-      padding: 1rem 1rem .5rem;
+      padding: 0;
   }
 
  .final-score {
@@ -217,24 +217,30 @@ button {
     padding: 1.4rem 2rem;
 }
 
-  a.try-again-btn {
+.try-again-btn {
       text-align: center;
       font-size: 22px;
-      margin: 0 auto;
-      padding: 15px 15px;
-      display: inline-block;
+      font-weight: 600;
+      margin: 1.8rem auto 1rem;
+      padding: 20px 20px;
+      display: block;
       color: white;
       background-color: purple;
       border-radius: 10px;
+      display: none;
+      cursor: pointer;
+      outline: none;
   }
 
-  a.try-again-btn:hover {
+  .try-again-btn:hover {
       background-color: rebeccapurple;
       border: 5px solid rebeccapurple;
+      cursor: pointer;
   }
 
   .sizing {
       width: 150px;
+      height: auto;
       display: none;
       flex-flow: wrap;
       justify-content: center;
@@ -308,7 +314,7 @@ button {
         line-height: 34px;
     }
     .button-style {
-        margin: 15px;
+        margin: 5px;
         padding: 20px;
         font-size: 18px;
     }

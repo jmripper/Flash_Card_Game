@@ -75,14 +75,14 @@ const parkCards = [
     new questionCard (
         "Which was the first national park established for the purpose of protecting man-made structures?",
         ["National Mall and Memorial Parks", "New River Gorge National Park", "Mesa Verde National Park", "Fort Caroline National Park"], 
-        ['images/mallparks.png', 'images/newrivergorge.png', 'images/mesaverde.png', 'images/fortcaroline.png'],
+        ['images/mallpark.png', 'images/newrivergorge.png', 'images/mesaverde.png', 'images/fortcaroline.png'],
         "Mesa Verde National Park", 
         "In June 1906 President Theodore Roosevelt signed the bill that established Mesa Verde National Park in southwestern Colorado to protect Ancestral Puebloan archaeological sites."),
 
     new questionCard (
         "Which national park site contains the most lighthouses?", 
         ["Cape Cod National Seashore", "Pt. Reyes Natiaonl Seashores", "Ise Royale National Park", "Apostle Island National Lakeshore"], 
-        ['images/capecodenationalseashore.png', 'images/pointreyes.png','images/isleroyal2.png', 'images/apostleislands.png'], 
+        ['images/capecodenationalseashore.png', 'images/pointreyes.png','images/isleroyale2.png', 'images/apostleislands.png'], 
         "Apostle Island National Lakeshore", 
         "Nine of the 50 lighthouses cared for by the National Park Service are located within Apostle Islands National Lakeshore in Wisconsin, making it the national park site with the most lighthouses. All of them were built in the 19th century, and some are still in service today.")
 ]
@@ -100,6 +100,10 @@ const showDescription = document.querySelector(".description")
 const answerContainer = document.querySelector(".answer-container")
 const descriptionTitle = document.querySelector(".answer-title")
 const scoreText = document.querySelector("#score");
+const questionContainer = document.querySelector("#questions")
+const endPage = document.querySelector("#end-page")
+const endPageText = document.querySelector(".end-tag-text")
+const tryAgainButton = document.querySelector(".try-again-btn")
 
 let activeCard = 0
 let score = 0
@@ -165,11 +169,40 @@ function nextButtonFunction() {
             answerItem[j].style.pointerEvents = "auto"
             answerItem[j].className = 'answers'
         }
-        displayQuestionCard();
         answerContainer.style.display = "none"
+        
+        if (activeCard === parkCards.length) {
+            endGame();
+        } else { 
+            displayQuestionCard();
+        }
+    })
+}
+
+function endGame() {
+    if (activeCard === parkCards.length) {
+        questionContainer.innerHTML = ''
+         let h2 = document.createElement("h2")
+         h2.innerHTML = "Thanks for playing!"
+         endPageText.appendChild(h2);
+         endPage.insertBefore(h2, endPageText)
+
+         endPageText.innerHTML = `Your Final Score:<br><span class='final-score'>${score}/${parkCards.length}</span>`
+
+         tryAgainButton.style.display = "block"
+         scoreText.style.display = "none"         
+    }
+}
+
+function playAgain() {
+    tryAgainButton.addEventListener("click", (e) => {
+        console.log("clicked")
+        window.location.reload();
     })
 }
 
 displayQuestionCard();
 checkAnswer();
 nextButtonFunction();
+endGame();
+playAgain();
