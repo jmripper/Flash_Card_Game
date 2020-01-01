@@ -54,7 +54,7 @@ const parkCards = [
     new questionCard (
         "What is the least visited national park?",
         ["Dry Tortugas National Park", "Isle Royale National Park", "North Cascades National Park", "Black Canyon of the Gunnison National Park"], 
-        ['images/drytortugas.png', 'images/isleroyal.png', 'images/northcascade.png', 'images/blackcanyon.png' ],
+        ['images/dryTortugas.png', 'images/isleroyal.png', 'images/northcascade.png', 'images/blackcanyon.png' ],
         "Isle Royale National Park", 
         "According to the National Park Service Visitor Statistics, Michigan's Isle Royale National Park saw only 18,684 recreational visits in 2015. This is due largely to the fact that the remote park is accessible only by boat or seaplane."),
 
