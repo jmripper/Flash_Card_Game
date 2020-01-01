@@ -40,7 +40,7 @@ const parkCards = [
     new questionCard (
         "What national park is home to the world's largest tree by volume?",
         ["Red Wood National Park", "Joshua Tree National Park", "California's Sequoia National Park", "Everglades National Park"], 
-        ['images/redwoodpark.png', 'images/joshuatreepark.png', 'images/sequoia.png', 'images/EvergladesPark.png' ],
+        ['images/redwoodpark.png', 'images/joshuatreepark.png', 'images/sequoia.png', 'images/evergladespark.png' ],
         "California's Sequoia National Park", 
         "The General Sherman Tree located in California's Sequoia National Park is the largest tree by volume in the world. This massive tree measures a whopping 275 feet tall and 25 feet wide, resulting in a trunk volume of 52,513 cubic feet. It is also one of the oldest trees on the planet with an estimated age of 2,300-2,700 years old."),
 
