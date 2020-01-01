@@ -153,7 +153,7 @@ function checkAnswer() {
                 choice.classList.remove("answers")
                 choice.classList.add("answer-wrong")
                 answerContainer.style.display = "block"
-                descriptionTitle.innerText = `Incorrect. The correct answer is ${parkCards[activeCard].rightAnswer}`
+                descriptionTitle.innerText = `Incorrect. The correct answer is ${parkCards[activeCard].rightAnswer}.`
                 showDescription.innerText = parkCards[activeCard].rightAnswerInfo
             }
         })
