@@ -47,21 +47,21 @@ const parkCards = [
     new questionCard(
         "What is the most visited national park?",
         ["The Great Smoky Mountains", "The Grand Canyon", "Yosemite National Park", "Rocky Mountain National Park"], 
-        ['images/smokeymountains.png', 'images/grandcanyon.png', 'images/yosemitepark2.png', 'images/RockyMountainNationalPark.png'],
+        ['images/smokeymountains.png', 'images/grandcanyon.png', 'images/yosemitepark2.png', 'images/rockymountainnationalpark.png'],
         "The Great Smoky Mountains", 
         "In 2015 alone, parks across the U.S. drew more than 307.2 million visits. That's almost one visit per every person in America! Of these visits, over 10 million of them were to The Great Smoky Mountains – almost twice as much as the 5.5 million visits to the second most popular park, The Grand Canyon."),
 
     new questionCard (
         "What is the least visited national park?",
         ["Dry Tortugas National Park", "Isle Royale National Park", "North Cascades National Park", "Black Canyon of the Gunnison National Park"], 
-        ['images/dryTortugas.png', 'images/isleroyal.png', 'images/northcascade.png', 'images/blackcanyon.png' ],
+        ['images/drytortugas.png', 'images/isleroyal.png', 'images/northcascade.png', 'images/blackcanyon.png' ],
         "Isle Royale National Park", 
         "According to the National Park Service Visitor Statistics, Michigan's Isle Royale National Park saw only 18,684 recreational visits in 2015. This is due largely to the fact that the remote park is accessible only by boat or seaplane."),
 
     new questionCard (
         "What National Park contains the highest peak in North America?",
         ["Grand Teton National Park", "Hawaii Volcanoes National Park", "Mount Rainier National Park", "Denali National Park"], 
-        ['/images/grandteton2.png', 'images/hawaiivolcanoe.png', 'images/mountrainer.png', '/images/Denali.png'], 
+        ['/images/grandteton2.png', 'images/hawaiivolcanoe.png', 'images/mountrainer.png', '/images/denali.png'], 
         "Denali National Park", 
         "Formerly known as Mount McKinley, Denali is the tallest mountain in North America with a peak elevation of 20,310 feet."),
 
