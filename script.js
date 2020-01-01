@@ -47,7 +47,7 @@ const parkCards = [
     new questionCard(
         "What is the most visited national park?",
         ["The Great Smoky Mountains", "The Grand Canyon", "Yosemite National Park", "Rocky Mountain National Park"], 
-        ['images/smokeymountains.png', 'images/grandCanyon.png', 'images/yosemitepark2.png', 'images/RockyMountainNationalPark.png'],
+        ['images/smokeymountains.png', 'images/grandcanyon.png', 'images/yosemitepark2.png', 'images/RockyMountainNationalPark.png'],
         "The Great Smoky Mountains", 
         "In 2015 alone, parks across the U.S. drew more than 307.2 million visits. That's almost one visit per every person in America! Of these visits, over 10 million of them were to The Great Smoky Mountains – almost twice as much as the 5.5 million visits to the second most popular park, The Grand Canyon."),
 
