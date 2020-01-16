@@ -46,7 +46,7 @@ const parkCards = [
 
     new questionCard(
         "What is the most visited national park?",
-        ["The Great Smoky Mountains", "The Grand Canyon", "Yosemite National Park", "Rocky Mountain National Park"], 
+        ["The Great Smokey Mountains", "The Grand Canyon", "Yosemite National Park", "Rocky Mountain National Park"], 
         ['images/smokeymountains.png', 'images/grandcanyon.png', 'images/yosemitepark2.png', 'images/rockymountainnationalpark.png'],
         "The Great Smoky Mountains", 
         "In 2015 alone, parks across the U.S. drew more than 307.2 million visits. That's almost one visit per every person in America! Of these visits, over 10 million of them were to The Great Smoky Mountains – almost twice as much as the 5.5 million visits to the second most popular park, The Grand Canyon."),
@@ -81,7 +81,7 @@ const parkCards = [
 
     new questionCard (
         "Which national park site contains the most lighthouses?", 
-        ["Cape Cod National Seashore", "Pt. Reyes Natiaonl Seashores", "Ise Royale National Park", "Apostle Island National Lakeshore"], 
+        ["Cape Cod National Seashore", "Pt. Reyes National Seashores", "Isle Royale National Park", "Apostle Island National Lakeshore"], 
         ['images/capecodenationalseashore.png', 'images/pointreyes.png','images/isleroyale2.png', 'images/apostleislands.png'], 
         "Apostle Island National Lakeshore", 
         "Nine of the 50 lighthouses cared for by the National Park Service are located within Apostle Islands National Lakeshore in Wisconsin, making it the national park site with the most lighthouses. All of them were built in the 19th century, and some are still in service today.")
