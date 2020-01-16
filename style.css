@@ -171,12 +171,12 @@ main {
 }
 
 .button-style {
-    margin: 8px;
-    padding: 10px;
+    margin: 20px 10px 10px;;
+    padding: 15px;
     background: #9ACFCC;
     border-radius: 10px;
     color: #00403C;
-    font-size: 14px;
+    font-size: 18px;
     font-weight: 550;
     cursor: pointer;
     outline: none;
