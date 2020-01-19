@@ -109,6 +109,10 @@ let activeCard = 0
 let score = 0
 let currentQuestion = parkCards[activeCard]
 
+function welcomeScreen() {
+    
+}
+
 function displayQuestionCard() {
     const card = parkCards[activeCard]
     const answerChoices = card.answerChoice
