@@ -1,6 +1,6 @@
 # National Parks Trivia
 
-Test your knowledge of our nations National Parks with a fun interactive quiz built with HTML, CSS, and Javascript.
+Test your knowledge of our nations National Parks with a fun interactive quiz built with HTML, CSS, and Javascript. This quiz was built to be responsive and can be played on any device. 
 
 ## Built With
 - HTML5
