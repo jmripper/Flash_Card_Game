@@ -104,16 +104,24 @@ const questionContainer = document.querySelector("#questions")
 const endPage = document.querySelector("#end-page")
 const endPageText = document.querySelector(".end-tag-text")
 const tryAgainButton = document.querySelector(".try-again-btn")
+const playButton = document.querySelector(".wel-btn")
+const cardContainer = document.querySelector(".card-container")
+const welcomeContainer = document.querySelector(".welcome-container")
 
 let activeCard = 0
 let score = 0
 let currentQuestion = parkCards[activeCard]
 
-function welcomeScreen() {
-    
+function welcomeScreen(){
+    playButton.addEventListener("click", evt => {
+        evt.preventDefault();
+        welcomeContainer.style.display = "none"
+        cardContainer.style.display = "block"
+
+    })
 }
 
-function displayQuestionCard() {
+function displayQuestionCard(){
     const card = parkCards[activeCard]
     const answerChoices = card.answerChoice
     const imageChoices = card.choiceImages
@@ -207,6 +215,7 @@ function playAgain() {
     })
 }
 
+welcomeScreen();
 displayQuestionCard();
 checkAnswer();
 nextButtonFunction();
