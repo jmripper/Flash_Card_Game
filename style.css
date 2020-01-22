@@ -61,7 +61,9 @@ h4 {
 
 main {
   width: 100%;
-  background: url(images/Ansel-Adams.jpg) no-repeat 100% 100% / cover fixed ;
+  height: auto;
+  position: relative;
+  margin:0 auto;
 }
 
 .wrapper {
@@ -77,7 +79,7 @@ main {
   margin: 0 auto;
   position: relative;
   border-radius: 15px;
-  padding: 1em;
+  padding: 1em 1em;
   width: 100%;
 }
 
@@ -91,9 +93,8 @@ main {
   padding: 1rem 0;
 }
 
-.welcome-img-container .wel-img {
-  height: 100px;
-  width: 100px;
+.wel-img-2,.wel-img-3,.wel-img-4 {
+  display: none;
 }
 
 .wel-btn-container {
@@ -146,6 +147,7 @@ main {
   position: relative;
   border-radius: 15px;
   padding: 1em;
+  display: none;
 }
 
 .question-title {
@@ -322,13 +324,18 @@ button {
 
 @media screen and (min-width: 576px) {
   .wrapper {
-    padding: 2em;
+    padding: 3em 2em;
     display: flex;
     flex-flow: column;
     justify-content: center;
     align-items: center;
     align-content: center;
   }
+
+  h2 {
+      padding: 1rem 3em;
+  }
+
   .card-container {
     padding: 2em;
     min-width: 500px;
@@ -395,5 +402,15 @@ button {
 
   .sizing {
     display: flex;
+  }
+
+  .welcome-img-container .wel-img-1,.wel-img-2,.wel-img-3,.wel-img-4 {
+    height: 100px;
+    width: 100px;
+    display: block;
+  }
+
+  .wrapper .welcome-container {
+      padding: 3em 1em;
   }
 }
