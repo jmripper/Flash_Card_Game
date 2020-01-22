@@ -2,7 +2,7 @@
 
 Test your knowledge of our nations National Parks with a fun interactive quiz built with HTML, CSS, and Javascript.
 
-## Technologies Used
+## Built With
 - HTML5
 - CSS3
 - Vanilla Javascript ES6
