@@ -1,6 +1,6 @@
-.background-image {
+body.background-image {
   width: 100%;
-  background: url(images/Ansel-Adams.jpg) no-repeat 100% 100% / cover fixed ;
+  background: url(images/Ansel-Adams.jpg) no-repeat 100% 100% / cover fixed;
 }
 
 header {
