@@ -1,7 +1,5 @@
-body {
+.background-image {
   width: 100%;
-  font-family: "Karla", sans-serif;
-  font-size: 14px;
   background: url(images/Ansel-Adams.jpg) no-repeat 100% 100% / cover fixed ;
 }
 
