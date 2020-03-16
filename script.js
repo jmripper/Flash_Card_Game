@@ -25,7 +25,7 @@ const parkCards = [
 
     new questionCard (
         "What was the first National Park?",
-        ["Dealth Valley National Park", "Yosemite National Park", "Acadia National Park", "Yellowstone National Park"],
+        ["Death Valley National Park", "Yosemite National Park", "Acadia National Park", "Yellowstone National Park"],
         ['images/dealthvalley.png', 'images/yosemite.png', 'images/acadia.png', 'images/yellowstone.png'],
         "Yellowstone National Park", 
         "Yellowstone National Park, located in Wyoming, Montana and Idaho, was signed into law by President Ulysses S. Grant in 1872, becoming the first national park in America and in the world."),
